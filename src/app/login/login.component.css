@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+
+.main-login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9fafb;
+    
+    
+}
+
+.login-conteudo {
+    max-width: 400px;
+    padding: 20px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.titulo-login {
+    font-family: "Quantico", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 2.5rem;
+    color: #9333EA;
+    text-align: center;
+    margin-bottom: 10px;   
+
+}
+
+.hub-texto {
+    color: #f9a413;
+}
+
+.gamedevs-texto {
+    color: #9333EA;
+}
+
+.paragrafo-login {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #555555;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.input-grupo label {
+    font-weight: bold;
+    display: block;
+    padding: 5px;
+    font-family: 'Inter', sans-serif;
+    color: #606065;
+    
+}
+
+.input-grupo input {
+    width: 100%;
+    margin-bottom: 15px;  
+    box-sizing: border-box;  /*garante que o padding não aumente a largura total além dos 100%, evitando que o input estoure para fora da caixa */
+    padding: 10px;
+    border-radius:  5px;
+    border: 1px solid #cccccc;
+    
+
+}
+
+.input-grupo input:focus {
+    border-color: #f9a413;
+    outline: none;
+    
+
+}
+
+.botoes-login {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    
+}
+
+.botoes-login button {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.botao-enviar {
+
+    background-color: #3730A3;
+    color: #ffffff;
+    border: none;
+
+}
+
+.botao-enviar:hover {
+    background-color: #4F46E5;
+
+}
+
+.botao-login-rapido {
+    
+    background-color: #E0E7FF;
+    color: #3730A3;
+    border: none;
+}
+
+.botao-login-rapido:hover {
+    background-color: #C7D2FE;
+
+}
+
+.span-login {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #555555;
+    text-align: center;
+    margin-top: 15px;
+}
