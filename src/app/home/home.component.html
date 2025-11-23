@@ -21,4 +21,62 @@
     </section>
 
 
+
+
+<!--  ---------------- CARROSSEL----------------------- -->
+
+    <section class="secao-novidades">
+        
+        <h2>Novidades da Comunidade</h2>
+
+        <div class="carrossel-container">
+            
+            <button class="botao-seta" (click)="voltarSlide()"> < </button>
+
+            <div class="card-destaque">
+                <img [src]="novidades[indiceAtual].imagem" alt="Imagem do Slide" class="imagem-carrossel">
+                
+                <div class="info-card">
+                    <span class="tag-data">{{ novidades[indiceAtual].data }}</span>
+                    <h3>{{ novidades[indiceAtual].titulo }}</h3>
+                    <p>{{ novidades[indiceAtual].descricao }}</p>
+                </div>
+            </div>
+
+            <button class="botao-seta" (click)="proximoSlide()"> > </button>
+
+        </div>
+
+    </section>
+
+
+
+<section class="secao-2-home">
+
+    <div>
+        <div class="icone"> <span>👥</span></div>
+        <h2>Networking Inteligente</h2>
+        <p>Conecte-se com desenvolvedores tão apaixonados quanto você, desenvolvam seus sonhos. </p>
+    </div>
+        
+    <div>
+        <div class="icone"> <span>🔍</span></div>
+        <h2>Busca Avançada</h2>
+        <p>Encontre exatamente o que precisa com filtros por habilidade, experiência e disponibilidade.</p>
+    </div>
+
+    <div>
+        <div class="icone"> <span>🖼️</span></div>
+        <h2>Divulgue seus Projetos</h2>
+        <p>Mostre seu trabalho e descubra projetos inspiradores da comunidade de desenvolvedores.</p>
+    </div>
+
+</section>
+
 </main>
+
+
+
+
+
+

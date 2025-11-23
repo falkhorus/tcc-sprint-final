@@ -94,3 +94,135 @@
     color: #f9a413;
 }
 
+
+/* ------------------------------ CARROSSEL ------------------------------------ */
+.secao-novidades {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto; /* Centraliza a seção na tela */
+}
+
+.secao-novidades h2 {
+    font-family: "Quantico", sans-serif; /* Mantendo o padrão da marca */
+    color: #1f2937;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* O Container que segura tudo (Imagem + Botões) */
+.carrossel-container {
+    position: relative; /* Importante: Define o limite para os botões flutuantes */
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden; /* Garante que a imagem não vaze das bordas arredondadas */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Sombra chique */
+}
+
+/* A Imagem */
+.imagem-carrossel {
+    width: 100%;
+    height: 450px; /* Altura fixa para não pular */
+    object-fit: cover; /* Corta a imagem para preencher sem esticar */
+    display: block;
+}
+
+/* --- TEXTO SOBREPOSTO (Overlay) --- */
+.info-card {
+    position: absolute; /* Flutua por cima da imagem */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    text-align: left; /* Texto alinhado à esquerda como na foto */
+    
+    /* O SEGREDO: Gradiente preto transparente para o texto aparecer */
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: white;
+    box-sizing: border-box;
+}
+
+.tag-data {
+    background-color: #9333EA; /* O Roxo do Hub */
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.info-card h3 {
+    font-family: "Quantico", sans-serif;
+    font-size: 1.8rem;
+    margin: 5px 0;
+    font-weight: 700;
+}
+
+.info-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #e5e7eb; /* Cinza bem clarinho */
+    margin: 0;
+}
+
+/* --- BOTÕES SETAS (< >) --- */
+.botao-seta {
+    position: absolute; /* Flutua solto */
+    top: 50%; /* Meio da altura */
+    transform: translateY(-50%); /* Ajuste fino do centro */
+    
+    background-color: rgba(31, 41, 55, 0.7); /* Fundo escuro transparente */
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    z-index: 10; /* Garante que fique EM CIMA da imagem */
+}
+
+.botao-seta:hover {
+    background-color: #9333EA; /* Fica roxo ao passar o mouse */
+}
+
+/* Posiciona cada um no seu canto */
+.botao-seta:first-child { left: 20px; } /* Botão Esquerda */
+.botao-seta:last-child { right: 20px; } /* Botão Direita */
+
+
+/* -------------------SEÇÃO 2---------------------------*/
+
+.secao-2-home {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,400px));
+    gap: 100px;
+    justify-content: center;
+    text-align: center;
+    font-family: "Quantico", sans-serif;
+    
+    
+}
+
+.icone {
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
+.icone span {
+    background-color: #F3E8FF;
+    border-radius: 50%;
+    padding: 10px;
+
+}
