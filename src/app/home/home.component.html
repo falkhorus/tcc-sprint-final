@@ -1,6 +1,6 @@
 <nav class="navbar">
 
-    <div class="div-footer-background">
+    <div class="div-header-background">
     <div class="logo"><a routerLink="/home">Indie<span class="hub-texto">[HUB]</span></a></div>
 
     <div class="nav-acoes">    
@@ -24,22 +24,29 @@
 
 
 <!--  ---------------- CARROSSEL----------------------- -->
-    <div class="div-secao-novidades">
+   <div class="div-secao-novidades">
     <section class="secao-novidades">
-        
+
         <h2>Novidades da Comunidade</h2>
 
-        <div class="carrossel-container">
-            
+        <div class="carrossel-wrapper">
+
             <button class="botao-seta" (click)="voltarSlide()"> < </button>
 
-            <div class="card-destaque">
-                <img [src]="novidades[indiceAtual].imagem" alt="Imagem do Slide" class="imagem-carrossel">
+            <div class="carrossel-janela">
                 
-                <div class="info-card">
-                    <span class="tag-data">{{ novidades[indiceAtual].data }}</span>
-                    <h3>{{ novidades[indiceAtual].titulo }}</h3>
-                    <p>{{ novidades[indiceAtual].descricao }}</p>
+                <div class="carrossel-trilho" [style.transform]="'translateX(-' + (indiceAtual * 100) + '%)'">
+                    
+                    <div class="card-destaque" *ngFor="let item of novidades">
+                        <img [src]="item.imagem" alt="Imagem do Slide" class="imagem-carrossel">
+                        
+                        <div class="info-card">
+                            <span class="tag-data">{{ item.data }}</span>
+                            <h3>{{ item.titulo }}</h3>
+                            <p>{{ item.descricao }}</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -47,8 +54,16 @@
 
         </div>
 
+        <div class="indicadores">
+            <span *ngFor="let item of novidades; let i = index" 
+                  class="bolinha" 
+                  [class.active]="i === indiceAtual"
+                  (click)="irParaSlide(i)">
+            </span>
+        </div>
+
     </section>
-    </div>
+</div>
 
 
 <!--  ----------------   SEÇÃO 2    ----------------------- -->
@@ -113,16 +128,18 @@
         <div class="footer-coluna">
             <h3>Social</h3>
             <div class="descricao-menu">
-            <img src="/instagram.png" alt="Instagram">
-            <img src="/github.png" alt="github">
-            <img src="/discord.png" alt="discord">
+                <div class="div-icones-footer">
+                    <img src="/instagram.png" alt="Instagram">
+                    <img src="/github.png" alt="github">
+                    <img src="/discord.png" alt="discord">
+                </div>
             </div>
         </div>
 
     </div>
 
     <div class="footer-logo-area">
-        <h2>Indie <span>[HUB]</span></h2>
+        <h2>Indie<span>[HUB]</span></h2>
         <p>Conectando devs pelo Brasil</p>
 
     </div>
