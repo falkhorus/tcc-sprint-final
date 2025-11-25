@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+
+.div-header-background {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: #bdb7c2 0px 0px 10px;
+}
+
+.logo {
+    font-family: 'Quantico', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-style: italic;
+    
+    
+    
+}
+
+.logo a {
+    text-decoration: none;
+    color: #9333EA;
+    
+}
+
+.hub-texto {
+    color: #f9a413;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 150px;
+    border-radius: 10px;
+    padding: 7px;
+    border-radius: 5px;
+    transition: all 0.3s;
+     
+    
+}
+
+.nav-header-links {
+    
+}
+
+
+
+
+/* --- REGRA PADRÃO (SEMPRE ATIVA) --- */
+.header-nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    color: #9333EA;
+    font-weight: 700;
+
+    /* O PADDING VEM PRA CÁ! */
+    /* Reservamos o espaço desde o início */
+    padding: 8px;
+    border-radius: 5px;
+    
+    /* Adicione isso para a cor mudar suavemente */
+    transition: all 0.3s;
+}
+
+.header-nav a:hover {
+    background-color: #9333EA;
+    color: #ffffff;
+    
+    /* REMOVI O PADDING DAQUI! */
+    /* Se deixar aqui, ele muda de tamanho e empurra tudo. */
+}
+
+.perfil {
+    margin-left: 15px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    color: #9333EA;
+    font-weight: 700;
+    
+}
+
+.nav-acoes a {
+    margin-left: 15px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    color: #9333EA;
+    font-weight: 700;
+    
+    
+}
+
+.nav-acoes .botao-cadastrar  {
+    background-color: #9333EA;
+    padding: 12px;
+    color: #ffffff;
+    border-radius: 7px;
+    font-weight: 700;
+}
