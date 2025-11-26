@@ -8,4 +8,12 @@ import { HeaderComponent } from '../header/header.component'; // Importa o arqui
   templateUrl: './nexus.component.html',
   styleUrl: './nexus.component.css'
 })
-export class NexusComponent {}
+export class NexusComponent {
+
+  opcaoSelecionada = 'contratando'
+
+  alterarOpcao(opcao: string) {
+    this.opcaoSelecionada = opcao;
+  }
+ 
+}

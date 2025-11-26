@@ -1,6 +1,58 @@
 <app-header></app-header>
 
 
+<!-- ----------------------- SECAO 1------------------------------- -->
+
+<main class="main-nexus">
+
+<section class="section1-nexus">
+    <div class="textos">
+    <h1>Conecte-se ao Ecossistema Indie</h1>
+    <p>Encontre talentos, oportunidades e colaborações no maior hub de desenvolvedores indie do Brasil</p>
+    </div>
+
+    <div class="botoes">
+
+     
+
+    <button class="botao-padrao" [class.ativo]="opcaoSelecionada === 'contratando'" (click)="alterarOpcao('contratando')">Estou contratando</button>
+
+
+    <button class="botao-padrao" [class.ativo]="opcaoSelecionada ==='trabalho'" (click)="alterarOpcao('trabalho')">Buscando trabalho</button>
+    </div>
+</section>
+
+<!-- ----------------------- SECAO 2------------------------------- -->
+
+
+<section class="secao-2"> 
+    <div class="div-secao-2"> 
+    <input placeholder="Nome ou profissão"  type="text">
+
+    <select name="" id="">
+        <option value="selecione">Selecione profissão</option>
+        <option value="game-designer">Game designer</option>
+        <option value="programador">Programador</option>
+        <option value="artista-2d">Artista 2D</option>
+        <option value="artista-3d">Artista 3D</option>
+        <option value="animador">Animador</option>
+        <option value="design-de-som">Designer de som</option>
+        <option value="compositor-musical">Compositor musical</option>
+        <option value="produtor-de-jogos">Produtor de jogos</option>
+        <option value="qa-tester">QA tester</option>
+        <option value="marketing">Marketing</option>
+        <option value="escritor">Escritor</option>
+        <option value="ui-ux-design">UI/UX Design</option>
+
+    </select>
+    <button class="botao1">Buscar</button>
+    </div>
+    <div class="botao2">
+    <button>Adicionar perfil +</button>
+    </div>   
+</section>
+
+</main>
 
 
 

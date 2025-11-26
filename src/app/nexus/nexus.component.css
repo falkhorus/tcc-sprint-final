@@ -1,2 +1,122 @@
 @import url('https://fonts.googleapis.com/css2?family=Quantico:wght@700&family=Inter:wght@400;600&display=swap');
 
+/* -----------------------SECAO 1----------------------------- */
+
+.section1-nexus {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.section1-nexus h1 {
+    font-family: "Quantico", sans-serif;
+}
+
+.section1-nexus p {
+    font-family: 'Inter', sans-serif;
+}
+
+.botoes {
+    background-color: #f3f4f6;
+    display: inline-flex;
+    border-radius: 30px;
+    padding: 5px;
+
+}
+
+
+.botao-padrao {
+
+    border: none;
+    background: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.3s;
+
+
+}
+.ativo {
+    background-color: #9333EA;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+/* -----------------------SECAO 2----------------------------- */
+
+.div-secao-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 40px;
+    background-color: #f3f4f6;
+    padding: 50px;
+    border-radius: 20px;
+    width: 50%;
+    margin: 40px auto;
+    width: 70%; /*  se ajusta ao tamanho do conteúdo */
+    flex-wrap: wrap;
+}
+
+.div-secao-2  input {
+    padding: 10px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 400px;
+    
+}
+
+.div-secao-2 select {
+    padding: 10px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+    width: 400px;
+}
+
+.div-secao-2  button {
+    background-color: #9333EA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 400px;
+}
+
+
+.botao2 {
+    width: 75%;
+    display: flex;
+    justify-content: flex-end;
+    margin: auto;
+    
+
+}
+
+.botao2 button{
+    background-color: #9333EA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin-left: auto;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    
+    
+    
+}
