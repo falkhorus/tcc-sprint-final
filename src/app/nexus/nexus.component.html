@@ -52,7 +52,78 @@
     </div>   
 </section>
 
+
+<!-- ----------------------- SECAO 3 CARDS CONTRATANDO------------------------------- -->
+
+<section class="talentos-section" *ngIf="opcaoSelecionada === 'contratando'">
+    
+    <div class="div-talentos-disponiveis">
+    <h2 class="talentos-disponiveis-h2">Talentos Disponíveis ({{ talentos.length }})</h2>
+    </div>
+    <div class="talentos-grid">
+        <div class="card-talento" *ngFor="let item of talentos">
+            <div class="card-header">
+                <img [src]="item.foto" class="avatar">
+                <div class="header-info">
+                    <h3>{{ item.nome }}</h3>
+                    <span [style.color]="item.corCargo">{{ item.cargo }}</span>
+                </div>
+            </div>
+            <div class="card-details">
+                <p>🕒 {{ item.xp }}</p>
+                <p>📍 {{ item.local }}</p>
+                <p>💰 {{ item.valorHora }}</p>
+            </div>
+            <button class="btn-ver-perfil">Ver Perfil</button>
+        </div>
+    </div>
+
+</section>
+
+<!-- ----------------------- SECAO 4 CARDS BUSCANDO TRABALHO------------------------------- --> 
+
+
+<section class="talentos-section" *ngIf="opcaoSelecionada === 'trabalho'">
+
+    <div class="div-oportunidades-disponiveis">
+    <h2>Oportunidades Disponíveis ({{ vagas.length }})</h2>
+    </div>
+    
+    <div class="vagas-container"> 
+        
+        <div class="card-vaga" *ngFor="let vaga of vagas">
+            
+            <div class="vaga-header">
+                <div class="vaga-titulo-area">
+                    <h3>{{ vaga.titulo }}</h3>
+                    <span class="empresa-nome">{{ vaga.empresa }}</span>
+                </div>
+                
+                <div class="tags-area">
+                    <span class="tag-vaga" *ngFor="let tag of vaga.tags">{{ tag }}</span>
+                </div>
+            </div>
+
+            <p class="vaga-desc">{{ vaga.descricao }}</p>
+
+            <div class="vaga-detalhes">
+                <div>
+                    <strong>Gênero:</strong><br> {{ vaga.genero }}
+                </div>
+                <div>
+                    <strong>Salário:</strong><br> {{ vaga.salario }}
+                </div>
+                <div>
+                    <strong>Requisitos:</strong><br> {{ vaga.requisitos }}
+                </div>
+            </div>
+
+            <button class="btn-candidatar">Candidatar-se</button>
+
+        </div>
+
+    </div>
+
+</section>
+
 </main>
-
-
-

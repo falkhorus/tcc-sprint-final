@@ -1,26 +1,39 @@
 <nav class="navbar">
 
     <div class="div-header-background">
-    <div class="logo"><a routerLink="/home">Indie<span class="hub-texto">[HUB]</span></a></div>
-
-    <nav class="header-nav">
-        <div class="nav-header-links">
-        <a routerLink="/home">Home</a>
-        </div>
-        <div class="nav-header-links">
-        <a routerLink="/nexus">Nexus</a>
-        </div>
-        <div class="nav-header-links">
-        <a routerLink="/mural">Mural</a>
-        </div>
         
-    </nav>
+        <div class="logo">
+            <a routerLink="/home">Indie<span class="hub-texto">[HUB]</span></a>
+        </div>
 
-    <div class="header-user">
-        <a routerLink="/perfil" class="perfil">
-            <span class="icon">👤</span> Perfil
-        </a>
-    </div>
+        <button class="btn-hamburguer" (click)="alternarMenu()">
+            <span class="risco"></span>
+            <span class="risco"></span>
+            <span class="risco"></span>
+        </button>
+
+        <nav class="header-nav" [class.ativo]="menuAberto">
+            <div class="nav-header-links">
+                <a routerLink="/home" (click)="fecharMenu()">Home</a>
+            </div>
+            <div class="nav-header-links">
+                <a routerLink="/nexus" (click)="fecharMenu()">Nexus</a>
+            </div>
+            <div class="nav-header-links">
+                <a routerLink="/mural" (click)="fecharMenu()">Mural</a>
+            </div>
+            
+            <div class="nav-header-links perfil-mobile">
+                <a routerLink="/perfil" (click)="fecharMenu()">Perfil</a>
+            </div>
+        </nav>
+
+        <div class="header-user">
+            <a routerLink="/perfil" class="perfil">
+                <span class="icon">👤</span> Perfil
+            </a>
+        </div>
+
     </div>
 
 </nav>

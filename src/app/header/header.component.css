@@ -3,6 +3,7 @@
 
 
 
+
 .div-header-background {
     display: flex;
     justify-content: space-between;
@@ -60,12 +61,10 @@
     color: #9333EA;
     font-weight: 700;
 
-    /* O PADDING VEM PRA CÁ! */
+    
     /* Reservamos o espaço desde o início */
     padding: 8px;
     border-radius: 5px;
-    
-    /* Adicione isso para a cor mudar suavemente */
     transition: all 0.3s;
 }
 
@@ -73,8 +72,7 @@
     background-color: #9333EA;
     color: #ffffff;
     
-    /* REMOVI O PADDING DAQUI! */
-    /* Se deixar aqui, ele muda de tamanho e empurra tudo. */
+    /* muda de tamanho e empurra tudo. */
 }
 
 .perfil {
@@ -104,4 +102,86 @@
     color: #ffffff;
     border-radius: 7px;
     font-weight: 700;
+}
+
+
+
+
+/* --------------------------MENU AMBURGUER------------------------------------------ */
+
+
+
+/* Botão Hambúrguer (Invisível no PC) */
+.btn-hamburguer {
+    display: none; /* Só aparece no mobile */
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.risco {
+    width: 30px;
+    height: 3px;
+    background-color: #9333EA; /* Roxo */
+    border-radius: 5px;
+}
+
+
+
+
+
+@media (max-width: 1160px) {
+
+    /* Mostra o botão hambúrguer */
+    .btn-hamburguer {
+        display: flex; 
+    }
+
+    /* Esconde o botão de perfil lateral (já estádentro do menu) */
+    .header-user {
+        display: none;
+    }
+
+    /* Configuração do Menu "Gaveta" */
+    .header-nav {
+        display: none; /* ESCONDIDO POR PADRÃO */
+        flex-direction: column;
+        position: absolute; /* Flutua sobre o site */
+        top: 80px; /* Altura do header */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 20px 0;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        gap: 0; /* Removemos o gap grande */
+        z-index: 999;
+    }
+
+    /* CLASSE: Quando o TS diz que está aberto */
+    .header-nav.ativo {
+        display: flex; /* APARECE! */
+        animation: descerMenu 0.3s ease-in-out;
+    }
+
+    /* Estilo dos links no mobile */
+    .nav-header-links {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .nav-header-links a {
+        margin-left: 0;
+        display: block;
+        width: 100%;
+    }
+}
+
+/* Animação suave de descida */
+@keyframes descerMenu {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
