@@ -15,7 +15,9 @@ import { CommonModule } from '@angular/common';
 export class NexusComponent {
   
 
-  opcaoSelecionada = 'contratando'
+  
+
+
 
   alterarOpcao(opcao: string) {
     this.opcaoSelecionada = opcao;
@@ -117,6 +119,43 @@ export class NexusComponent {
     }
   ];
 
+
+  opcaoSelecionada = 'contratando'
+  modalAberto = false;
+
+   //Controle do Modal de VAGA
+  modalVagaAberto = false;
+
+  // --- Funções do Perfil ---
+  abrirModal() { 
+    this.modalAberto = true; }
+  fecharModal() {
+     this.modalAberto = false; }
+
+  // --- Funções da Vaga ---
+  abrirModalVaga() {
+    this.modalVagaAberto = true;
+  }
+   fecharModalVaga() {
+    this.modalVagaAberto = false;
+  }
+
+
+
+
+// LISTAS PARA O MODAL
+  listaHabilidades = [
+    'Unity', 'Unreal Engine', 'C#', 'C++', 'JavaScript', 
+    'Python', 'Photoshop', 'Blender', 'Maya', 'Aseprite',
+    'Git', 'Agile', 'Game Design', 'Level Design', 'UI Design',
+    'Sound Design'
+  ];
+
+  listaGeneros = [
+    'Action', 'Adventure', 'RPG', 'Strategy', 
+    'Puzzle', 'Platformer', 'Simulation', 'Sports',
+    'Racing', 'Horror', 'Indie'
+  ];
 
 
  

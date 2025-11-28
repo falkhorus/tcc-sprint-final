@@ -94,7 +94,7 @@
 }
 
 
-.botao2 {
+.botao2, .botao3 {
     width: 75%;
     display: flex;
     justify-content: flex-end;
@@ -104,6 +104,24 @@
 }
 
 .botao2 button{
+    background-color: #9333EA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin-left: auto;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    
+    
+    
+}
+
+.botao3 button{
     background-color: #9333EA;
     color: white;
     border: none;
@@ -353,5 +371,238 @@
 }
 
 .btn-candidatar:hover {
+    background-color: #7e22ce;
+}
+
+
+
+/* ---------------------------MODAL------------------------------------ */
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f3f4f6; /* Linha sutil abaixo do título */
+}
+
+.modal-header h1 {
+    font-family: 'Quantico', sans-serif; 
+    font-size: 2rem;
+    color: #1f2937;
+    margin: 0;
+}
+
+.modal-header h2 {
+    font-family: 'Quantico', sans-serif; /* Fonte da marca */
+    font-size: 1.5rem;
+    color: #1f2937;
+    margin: 0;
+}
+
+/* Botão X de fechar */
+.modal-header button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-header button:hover {
+    color: #ef4444; /* Vermelho ao passar o mouse */
+}
+
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+
+
+}
+
+.modal-janela {
+    position: absolute;
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    padding: 30px;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.3);
+    animation: aparecer 0.3s ease-out;
+    
+ 
+    
+    
+}
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }}
+
+
+
+.modal-janela label {
+    display: block;
+    margin: 10px;
+    font-weight: 600;
+    color: #374151;
+    font-family: 'Inter', sans-serif;
+    
+}
+
+
+
+.form-linha {
+    display: flex;
+    gap: 20px;
+
+}    
+
+.form-grupo {
+    flex: 1;       /*faz com que os itens ocupem todo o espaço da div */
+    display: flex;
+    flex-direction: column;
+}
+
+
+.modal-body {
+    max-height: 70vh; /* Máximo de 70% da altura da tela */
+    overflow-y: auto; /* Cria barra de rolagem se crescer demais */
+    padding-right: 10px; /* Espaço para a barra de rolagem não colar no conteúdo */
+    
+    /* Personalizando a barra de rolagem (Fica muito pro!) */
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
+}
+
+.modal-body input, .modal-body select, .modal-body textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px; 
+    border: 1px solid #d1d5db; 
+    
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #374151;
+    
+    /* Garante que o padding não estoure a largura de 100% */
+    box-sizing: border-box; 
+    outline: none; /* Remove a borda azul padrão do navegador */
+    transition: border-color 0.3s;
+}
+
+
+
+/* Efeito quando clica para digitar */
+.modal-body input:focus, 
+.modal-body select:focus, 
+.modal-body textarea:focus {
+    border-color: #9333EA; 
+}
+
+
+/* ------------------ As tags habilidade e jogos preferidos----------------------------- */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px;       
+    margin-top: 5px;
+}
+
+
+
+.btn-tag, .btn-tag2{
+    background-color: #f3f4f6; 
+    border: 1px solid #e5e7eb; 
+    border-radius: 6px;
+    padding: 8px 16px;
+    
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    /* Faz todos terem a mesma largura mínima para ficarem organizados */
+    flex: 1 0 auto; /* Cresce para preencher espaços vazios */
+    text-align: center;
+}
+
+/* Efeito ao passar o mouse */
+.btn-tag:hover {
+    background-color: #bc87ee;
+    color: #1f2937;
+}
+
+.btn-tag2:hover {
+    background-color: #f2ca86;
+    color: #1f2937;
+}
+
+/* (Opcional) Classe para quando estiver selecionado */
+.btn-tag.selecionado {
+    background-color: #f3e8ff; /* Fundo roxo claro */
+    color: #9333EA;            /* Texto roxo */
+    border-color: #9333EA;
+}
+
+/* ------------------------botoes cancelar e adicionar perfil----------------------------------------- */
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between; /* Um em cada ponta */
+    gap: 15px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6; /* Linha separadora */
+}
+
+
+.botao-cancelar {
+    background-color: white;
+    border: 1px solid #d1d5db;
+    color: #4b5563;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    flex: 1; /* Ocupa metade */
+    transition: all 0.2s;
+}
+
+.botao-cancelar:hover {
+    background-color: #ff8484;
+    border-color: #9ca3af;
+    color: #ffffff;
+}
+
+/* Botão Salvar (Roxo Cheio) */
+.botao-add-perfil, .botao-add-vaga {
+    background-color: #9333EA;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    flex: 1; /* Ocupa a outra metade */
+    transition: background 0.3s;
+}
+
+.botao-add-perfil:hover {
     background-color: #7e22ce;
 }
