@@ -196,6 +196,7 @@
     height: 90px;
     width: 90px;
     border-radius: 50%;
+    object-fit: cover;  /*  essa propriedade garante que a imagem preencha o espaço sem distorcer */
 }
 
 .btn-ver-perfil {
@@ -234,6 +235,48 @@
     transform: translateY(-10px);
     transition: all 0.5s ease;
 }
+
+.selecionado1 {
+    background-color: #bc87ee !important; 
+    color: white !important;
+    border-color: #7e22ce !important;
+    transform: scale(1.05); /* Um leve zoom para dar feedback */
+    font-weight: bold;
+}
+
+.selecionado2 {
+    background-color: #f2ca86 !important; 
+    color: white !important;
+    border-color: #fca613 !important;
+    transform: scale(1.05); /* Um leve zoom para dar feedback */
+    font-weight: bold;
+}
+
+.card-tags {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.mini-tags-habilidades {
+    background: #bc87ee;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: #ffffff;
+    border: 1px solid #e5e7eb;
+}
+
+.mini-tags-generos {
+    background: #f2ca86;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: #7e22ce;
+    border: 1px solid #e5e7eb;
+}
+
 
 /* --------------------------- SEÇÃO 3 CARDS BUSCANDO TRABALHO------------------------------------ */
 
@@ -606,3 +649,22 @@
 .botao-add-perfil:hover {
     background-color: #7e22ce;
 }
+
+.form-group-checkbox {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    
+}
+
+/* ---------modificacoes label span ------------- */
+
+.form-group-checkbox label {
+    color: #9333EA;
+}
+
+.asterisco {
+    color: #ef4444;
+}
+

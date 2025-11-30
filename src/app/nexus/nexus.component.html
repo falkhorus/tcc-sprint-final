@@ -29,7 +29,8 @@
 
     <section class="secao-2">
         <div class="div-secao-2">
-            <input placeholder="Nome ou profissão" type="text">
+            <input type="text" placeholder="Pesquise um nome ou profissão..." [(ngModel)]="textoBusca">
+            
 
             <select name="" id="">
                 <option value="selecione">Selecione profissão</option>
@@ -62,28 +63,51 @@
 
     <section class="talentos-section" *ngIf="opcaoSelecionada === 'contratando'">
 
-        <div class="div-talentos-disponiveis">
-            <h2 class="talentos-disponiveis-h2">Talentos Disponíveis ({{ talentos.length }})</h2>
-        </div>
-        <div class="talentos-grid">
-            <div class="card-talento" *ngFor="let item of talentos">
+    <div class="div-talentos-disponiveis">
+        <h2 class="talentos-disponiveis-h2">Talentos Disponíveis ({{ talentos.length }})</h2>
+    </div>
+
+    <div class="talentos-grid">
+        
+        <div class="card-placeholder" *ngFor="let item of talentos">
+
+            <div class="card-talento" [class.card-expandido]="item.expandido">
+                
                 <div class="card-header">
                     <img [src]="item.foto" class="avatar">
                     <div class="header-info">
                         <h3>{{ item.nome }}</h3>
-                        <span [style.color]="item.corCargo">{{ item.cargo }}</span>
+                        <span [style.color]="item.corCargo">{{ item.cargo }}</span> 
                     </div>
                 </div>
+
                 <div class="card-details">
                     <p>🕒 {{ item.xp }}</p>
                     <p>📍 {{ item.local }}</p>
                     <p>💰 {{ item.valorHora }}</p>
-                </div>
-                <button class="btn-ver-perfil">Ver Perfil</button>
-            </div>
-        </div>
+                    <a [href]="item.portifolio" target="_blank">Portfolio</a>
 
-    </section>
+                    <div *ngIf="item.expandido" class="detalhes-extras">
+                        <p style="margin-top: 10px;"><strong>Bio:</strong> {{ item.biografia }}</p>
+
+                        <div class="card-tags" *ngIf="item.habilidades && item.habilidades.length > 0">
+                            <strong>Habilidades:</strong>
+                            <span *ngFor="let skill of item.habilidades" class="mini-tags-habilidades">{{ skill }}</span>
+                        </div>
+
+                        <div class="card-tags" *ngIf="item.generos && item.generos.length > 0">
+                            <strong>Gêneros:</strong>
+                            <span *ngFor="let gen of item.generos" class="mini-tags-generos">{{ gen }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-ver-perfil" (click)="togglePerfil(item)">
+                    {{ item.expandido ? 'Fechar Perfil' : 'Ver Perfil' }}
+                </button>
+            
+            </div> </div> </div>
+</section>
 
     <!-- ----------------------- SECAO 4 CARDS BUSCANDO TRABALHO------------------------------- -->
 
@@ -105,7 +129,7 @@
                     </div>
 
                     <div class="tags-area">
-                        <span class="tag-vaga" *ngFor="let tag of vaga.tags">{{ tag }}</span>
+                        <span class="tag-vaga">{{ vaga.tipo }}</span>
                     </div>
                 </div>
 
@@ -150,67 +174,86 @@
 
                     <div class="form-linha">
                         <div class="form-grupo">
-                            <label>Nome Completo *</label>
-                            <input type="text" placeholder="Seu nome">
+                            <label>Nome Completo <span class="asterisco">*</span></label>
+                            <input [(ngModel)]="novoTalento.nome" name="nome" type="text" placeholder="Seu nome">
                         </div>
                         <div class="form-grupo">
-                            <label>Profissão *</label>
-                            <select>
-                                <option value="selecione">Selecione profissão</option>
-                                <option value="game-designer">Game designer</option>
-                                <option value="programador">Programador</option>
-                                <option value="artista-2d">Artista 2D</option>
-                                <option value="artista-3d">Artista 3D</option>
-                                <option value="animador">Animador</option>
-                                <option value="design-de-som">Designer de som</option>
-                                <option value="compositor-musical">Compositor musical</option>
-                                <option value="produtor-de-jogos">Produtor de jogos</option>
-                                <option value="qa-tester">QA tester</option>
-                                <option value="marketing">Marketing</option>
-                                <option value="escritor">Escritor</option>
-                                <option value="ui-ux-design">UI/UX Design</option>
-                            </select>
+                            <label>Profissão <span class="asterisco">*</span></label>
+                            <div class="form-grupo">
+    
+    
+    <select 
+        [(ngModel)]="novoTalento.cargo" 
+        name="cargo"
+        [style.color]="corAtualSelecao" 
+        style="font-weight: 600;">
+        
+        <option value="">Selecione profissão</option>
+
+        <option *ngFor="let prof of listaProfissoes" 
+                [value]="prof.nome"
+                [style.color]="prof.cor">
+            {{ prof.nome }}
+        </option>
+
+    </select>
+</div>
                         </div>
                     </div>
 
                     <div class="form-linha">
                         <div class="form-grupo">
-                            <label>Experiência *</label>
-                            <input type="text" placeholder="ex: 3 anos">
+                            <label>Experiência <span class="asterisco">*</span></label>
+                            <input [(ngModel)]="novoTalento.xp" name="xp" type="text" placeholder="ex: 3 anos">
                         </div>
                         <div class="form-grupo">
-                            <label>Localização *</label>
-                            <input type="text" placeholder="Cidade, Estado">
+                            <label>Localização <span class="asterisco">*</span></label>
+                            <input [(ngModel)]="novoTalento.local" name="local" type="text" placeholder="Cidade, Estado">
                         </div>
                     </div>
 
+                    <div>
+                        <label for="">Trabalho/Hora</label>
+                        <input [(ngModel)]="novoTalento.valorHora" name="valorHora" type="text">
+                    </div>
+
+                    <div>
+                        <label for="">Imagem de Perfil</label>
+                        <input [(ngModel)]="novoTalento.foto" type="foto" placeholder="Adicione o link de uma imagem">
+                    </div>
                     <div class="form-grupo">
                         <label>Portfolio</label>
-                        <input type="text" placeholder="https://meuportfolio.com">
+                        <input [(ngModel)]="novoTalento.portifolio" name="portifolio" type="text" placeholder="https://meuportfolio.com">
                     </div>
 
                     <div class="form-grupo">
                         <label>Biografia</label>
-                        <textarea rows="4" placeholder="Fale sobre você..."></textarea>
+                        <textarea maxlength="150" [(ngModel)]="novoTalento.biografia" name="biografia" rows="4" placeholder="Fale sobre você..."></textarea>
                     </div>
 
                     <div class="form-group">
-        <label>Habilidades *</label>
-        <div class="tags-container">
-            <button class="btn-tag" *ngFor="let skill of listaHabilidades">
-                {{ skill }}
-            </button>
-        </div>
+    <label>Habilidades <span class="asterisco">*</span></label>
+    <div class="tags-container">
+        <button class="btn-tag" 
+                *ngFor="let skill of listaHabilidades"
+                (click)="toggleHabilidade(skill)"
+                [class.selecionado1]="novoTalento.habilidades.includes(skill)">
+            {{ skill }}
+        </button>
     </div>
+</div>
 
-    <div class="form-group">
-        <label>Gêneros de Jogo Preferidos *</label>
-        <div class="tags-container">
-            <button class="btn-tag2" *ngFor="let genero of listaGeneros">
-                {{ genero }}
-            </button>
-        </div>
+<div class="form-group">
+    <label>Gêneros de Jogo Preferidos <span class="asterisco">*</span></label>
+    <div class="tags-container">
+        <button class="btn-tag2" 
+                *ngFor="let genero of listaGeneros"
+                (click)="toggleGenero(genero)"
+                [class.selecionado2]="novoTalento.generos.includes(genero)">
+            {{ genero }}
+        </button>
     </div>
+</div>
 
                 </div>
 
@@ -218,7 +261,7 @@
 
             <div class="modal-footer">
                 <button class="botao-cancelar" (click)="fecharModal()">Cancelar</button>
-                <button class="botao-add-perfil" >Adicionar perfil</button>
+                <button class="botao-add-perfil" (click)="salvarTalento()" >Adicionar perfil</button>
             </div>
 
 
@@ -244,14 +287,15 @@
             
             <div class="form-row">
                 <div class="form-group">
-                    <label>Título da Vaga *</label>
-                    <input type="text" placeholder="Ex: Game Designer Pleno">
+                    <label>Título da Vaga <span class="asterisco">*</span></label>
+                    <input [(ngModel)]="novaVaga.titulo" type="text" placeholder="Ex: Game Designer Pleno" name="titulo">
                 </div>
                 <div class="form-group">
-                    <label>Tipo de Vaga *</label>
-                    <select>
-                        <option value="full">Full-time</option>
-                        <option value="part">Part-time</option>
+                    <label>Tipo de Vaga <span class="asterisco">*</span></label>
+                    <select [(ngModel)]="novaVaga.tipo"  name="tipo">
+
+                        <option value="full-time">Full-time</option>
+                        <option value="part-time">Part-time</option>
                         <option value="freelance">Freelancer</option>
                     </select>
                 </div>
@@ -259,12 +303,12 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Empresa *</label>
-                    <input type="text" placeholder="Nome da empresa">
+                    <label>Empresa <span class="asterisco">*</span></label>
+                    <input [(ngModel)]="novaVaga.empresa" type="text" placeholder="Nome da empresa" name="empresa">
                 </div>
                 <div class="form-group">
                     <label>Gênero do Jogo</label>
-                    <select>
+                    <select [(ngModel)]="novaVaga.genero" name="genero">
                         <option value="rpg">RPG</option>
                         <option value="acao">Ação</option>
                         <option value="aventura">Aventura</option>
@@ -274,23 +318,23 @@
 
             <div class="form-group">
                 <label>Salário (Opcional)</label>
-                <input type="text" placeholder="Ex: R$ 5.000 ou A combinar">
+                <input [(ngModel)]="novaVaga.salario" name="salario" type="text" placeholder="Ex: R$ 5.000 ou A combinar">
             </div>
 
-            <div class="form-group" style="flex-direction: row; align-items: center; gap: 10px;">
+            <div class="form-group-checkbox" style="flex-direction: row; align-items: center; gap: 10px;">
                 <input type="checkbox" id="remoto" style="width: auto;">
                 <label for="remoto" style="margin: 0;">Trabalho Remoto?</label>
             </div>
 
             <div class="form-group">
                 <label>Descrição da Vaga</label>
-                <textarea rows="4" placeholder="Descreva as responsabilidades..."></textarea>
+                <textarea [(ngModel)]="novaVaga.descricao" name="descricao" rows="4" placeholder="Descreva as responsabilidades..."></textarea>
             </div>
 
             <div class="form-group">
                 <label>Requisitos</label>
                 <div style="display: flex; gap: 10px;">
-                    <input type="text" placeholder="Digite um requisito">
+                    <input [(ngModel)]="novaVaga.requisitos" name="requisitos" type="text" placeholder="Digite um requisito">
                     <button style="background: #9333EA; color: white; border: none; border-radius: 8px; width: 40px; cursor: pointer;">+</button>
                 </div>
             </div>
@@ -299,7 +343,7 @@
 
         <div class="modal-footer">
             <button class="botao-cancelar" (click)="fecharModalVaga()">Cancelar</button>
-            <button class="botao-add-vaga">Publicar Vaga</button>
+            <button class="botao-add-vaga"  (click)="salvarVaga()">Publicar Vaga</button>
         </div>
 
     </div>
