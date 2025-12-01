@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { NexusComponent } from './nexus/nexus.component';
+import { MuralComponent } from './mural/mural.component';
 
 export const routes: Routes = [
 
@@ -13,7 +14,8 @@ export const routes: Routes = [
     //Essas são as rotas principais
     { path: 'login', component: LoginComponent} ,
     {path: 'register', component: RegisterComponent},
-    { path: 'nexus', component: NexusComponent }   
+    { path: 'nexus', component: NexusComponent },  
+    { path: 'mural', component: MuralComponent }
 
 
 

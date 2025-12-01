@@ -564,6 +564,8 @@
     flex-wrap: wrap; 
     gap: 10px;       
     margin-top: 5px;
+    
+    
 }
 
 
@@ -650,6 +652,8 @@
     background-color: #7e22ce;
 }
 
+
+
 .form-group-checkbox {
     display: flex;
     margin-top: 20px;
@@ -657,6 +661,9 @@
     
     
 }
+
+
+
 
 /* ---------modificacoes label span ------------- */
 

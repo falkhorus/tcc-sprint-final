@@ -194,25 +194,49 @@ export class NexusComponent {
   // --------------LÓGICA DE BUSCA----------------------
 
   textoBusca: string = '';
+  filtroCargo: string = '';
 
-  // ... abaixo da lista 'talentos' ...
+
+  // -----LÓGICA PARA FILTRO DE TALENTOS-----
 
   get talentosFiltrados() {
-    // 1. Se a busca estiver vazia, retorna tudo
-    if (!this.textoBusca) {
-      return this.talentos;
-    }
-
-    // 2. Transforma a busca em minúsculas para facilitar a comparação
     const termo = this.textoBusca.toLowerCase();
+    const cargoSelecionado = this.filtroCargo.toLowerCase();
 
-    // 3. Filtra a lista
     return this.talentos.filter(talento => {
-      const nome = talento.nome.toLowerCase();
-      const cargo = talento.cargo.toLowerCase();
       
-      // Retorna verdadeiro se o nome OU o cargo conterem o termo digitado
-      return nome.includes(termo) || cargo.includes(termo);
+      // Lógica para verificar a lista de gêneros (segura contra erros se a lista for vazia)
+      const temGenero = talento.generos?.some(gen => gen.toLowerCase().includes(termo));
+
+      // Verifica Texto (Nome OU Cargo OU Algum Gênero da lista)
+      const bateTexto = talento.nome.toLowerCase().includes(termo) || 
+                        talento.cargo.toLowerCase().includes(termo) ||
+                        temGenero; 
+
+      // Verifica Cargo (Filtro do Select)
+      const bateCargo = this.filtroCargo === '' || talento.cargo.toLowerCase().includes(cargoSelecionado);
+
+      return bateTexto && bateCargo;
+    });
+  }
+
+  // -----LÓGICA PARA FILTRO DE TALENTOS-----
+
+  get vagasFiltradas() {
+    const termo = this.textoBusca.toLowerCase();
+    const cargoSelecionado = this.filtroCargo.toLowerCase();
+
+    return this.vagas.filter(vaga => {
+      // 1. Verifica Texto (Título OU Empresa OU Gênero)
+      const bateTexto = vaga.titulo.toLowerCase().includes(termo) || 
+                        vaga.empresa.toLowerCase().includes(termo) ||
+                        vaga.genero.toLowerCase().includes(termo); // <--- LINHA NOVA!
+
+      // Verifica Cargo (Filtro do Select)
+      // Nas vagas, compara o select com o Título da vaga
+      const bateCargo = this.filtroCargo === '' || vaga.titulo.toLowerCase().includes(cargoSelecionado);
+
+      return bateTexto && bateCargo;
     });
   }
 

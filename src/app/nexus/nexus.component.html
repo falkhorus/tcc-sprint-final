@@ -29,23 +29,22 @@
 
     <section class="secao-2">
         <div class="div-secao-2">
-            <input type="text" placeholder="Pesquise um nome ou profissão..." [(ngModel)]="textoBusca">
+            <input type="text" placeholder="Pesquise um nome profissão ou gênero de game..." [(ngModel)]="textoBusca">
             
 
-            <select name="" id="">
-                <option value="selecione">Selecione profissão</option>
-                <option value="game-designer">Game designer</option>
-                <option value="programador">Programador</option>
-                <option value="artista-2d">Artista 2D</option>
-                <option value="artista-3d">Artista 3D</option>
-                <option value="animador">Animador</option>
-                <option value="design-de-som">Designer de som</option>
-                <option value="compositor-musical">Compositor musical</option>
-                <option value="produtor-de-jogos">Produtor de jogos</option>
-                <option value="qa-tester">QA tester</option>
-                <option value="marketing">Marketing</option>
-                <option value="escritor">Escritor</option>
-                <option value="ui-ux-design">UI/UX Design</option>
+            <select [(ngModel)]="filtroCargo"> <option value="">Todas as profissões</option>
+                
+                <option value="Game Designer">Game Designer</option>
+                <option value="Programador">Programador</option>
+                <option value="Artist">Artista (2D/3D)</option>
+                <option value="Animator">Animador</option>
+                <option value="Sound">Sound Designer</option>
+                <option value="Composer">Compositor</option>
+                <option value="Producer">Produtor</option>
+                <option value="QA">QA Tester</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Writer">Escritor</option>
+                <option value="UI/UX">UI/UX Design</option>
 
             </select>
             <button class="botao1">Buscar</button>
@@ -64,12 +63,12 @@
     <section class="talentos-section" *ngIf="opcaoSelecionada === 'contratando'">
 
     <div class="div-talentos-disponiveis">
-        <h2 class="talentos-disponiveis-h2">Talentos Disponíveis ({{ talentos.length }})</h2>
+        <h2 class="talentos-disponiveis-h2">Talentos Disponíveis ({{ talentosFiltrados.length }})</h2>
     </div>
 
     <div class="talentos-grid">
         
-        <div class="card-placeholder" *ngFor="let item of talentos">
+        <div class="card-placeholder" *ngFor="let item of talentosFiltrados">
 
             <div class="card-talento" [class.card-expandido]="item.expandido">
                 
@@ -115,12 +114,12 @@
     <section class="talentos-section" *ngIf="opcaoSelecionada === 'trabalho'">
 
         <div class="div-oportunidades-disponiveis">
-            <h2>Oportunidades Disponíveis ({{ vagas.length }})</h2>
+            <h2>Oportunidades Disponíveis ({{ vagasFiltradas.length }})</h2>
         </div>
 
         <div class="vagas-container">
 
-            <div class="card-vaga" *ngFor="let vaga of vagas">
+            <div class="card-vaga" *ngFor="let vaga of vagasFiltradas">
 
                 <div class="vaga-header">
                     <div class="vaga-titulo-area">
@@ -214,7 +213,7 @@
 
                     <div>
                         <label for="">Trabalho/Hora</label>
-                        <input [(ngModel)]="novoTalento.valorHora" name="valorHora" type="text">
+                        <input  placeholder="Ex: R$ 80/h" name="valorHora" type="text">
                     </div>
 
                     <div>
@@ -308,10 +307,35 @@
                 </div>
                 <div class="form-group">
                     <label>Gênero do Jogo</label>
-                    <select [(ngModel)]="novaVaga.genero" name="genero">
+                    <select class="form-group-select" [(ngModel)]="novaVaga.genero" name="genero">
                         <option value="rpg">RPG</option>
                         <option value="acao">Ação</option>
                         <option value="aventura">Aventura</option>
+                        <option value="plataforma">Plataforma</option>
+                        <option value="puzzle">Puzzle</option>
+                        <option value="estrategia">Estratégia</option>
+                        <option value="simulacao">Simulação</option>
+                        <option value="terror">Terror / Horror</option>
+                        <option value="sobrevivencia">Sobrevivência</option>
+                        <option value="fps">FPS (Tiro em 1ª Pessoa)</option>
+                        <option value="shooter">Shooter (Geral)</option>
+                        <option value="roguelike">Roguelike / Roguelite</option>
+                        <option value="metroidvania">Metroidvania</option>
+                        <option value="visual-novel">Visual Novel</option>
+                        <option value="luta">Luta</option>
+                        <option value="esportes">Esportes</option>
+                        <option value="corrida">Corrida</option>
+                        <option value="cartas">Card Game (Cartas)</option>
+                        <option value="ritmo">Ritmo / Musical</option>
+                        <option value="battle-royale">Battle Royale</option>
+                        <option value="sandbox">Sandbox / Mundo Aberto</option>
+                        <option value="moba">MOBA</option>
+                        <option value="stealth">Stealth (Furtividade)</option>
+                        <option value="cozy">Cozy (Relaxante)</option>
+                        <option value="educativo">Educativo</option>
+                        <option value="point-and-click">Point and Click</option>
+                        <option value="arcade">Arcade</option>
+                        
                     </select>
                 </div>
             </div>
