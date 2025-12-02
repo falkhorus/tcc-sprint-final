@@ -68,9 +68,13 @@
 
     <div class="talentos-grid">
         
-        <div class="card-placeholder" *ngFor="let item of talentosFiltrados">
+        <div class="card-placeholder" *ngFor="let item of talentosFiltrados; let i = index">
 
             <div class="card-talento" [class.card-expandido]="item.expandido">
+                <div class="card-actions">
+    <button class="btn-icon editar" (click)="prepararEdicaoTalento(item, i)">✏️</button>
+    <button class="btn-icon excluir" (click)="deletarTalento(i)">🗑️</button>
+</div>
                 
                 <div class="card-header">
                     <img [src]="item.foto" class="avatar">
@@ -119,9 +123,12 @@
 
         <div class="vagas-container">
 
-            <div class="card-vaga" *ngFor="let vaga of vagasFiltradas">
+    <!-- Loop pelas vagas filtradas -->
+    <div class="card-vaga" *ngFor="let vaga of vagasFiltradas">
 
-                <div class="vaga-header">
+        
+
+        <div class="vaga-header">
                     <div class="vaga-titulo-area">
                         <h3>{{ vaga.titulo }}</h3>
                         <span class="empresa-nome">{{ vaga.empresa }}</span>
@@ -211,10 +218,9 @@
                         </div>
                     </div>
 
-                    <div>
-                        <label for="">Trabalho/Hora</label>
-                        <input  placeholder="Ex: R$ 80/h" name="valorHora" type="text">
-                    </div>
+                   <div class="form-group"> <label for="">Trabalho/Hora</label>
+    <input [(ngModel)]="novoTalento.valorHora" name="valorHora" type="text">
+</div>
 
                     <div>
                         <label for="">Imagem de Perfil</label>
@@ -367,7 +373,9 @@
 
         <div class="modal-footer">
             <button class="botao-cancelar" (click)="fecharModalVaga()">Cancelar</button>
-            <button class="botao-add-vaga"  (click)="salvarVaga()">Publicar Vaga</button>
+            <button class="botao-add-vaga" (click)="salvarVaga()">
+    {{ indexEdicaoVaga > -1 ? 'Salvar Alterações' : 'Publicar Vaga' }}
+</button>
         </div>
 
     </div>

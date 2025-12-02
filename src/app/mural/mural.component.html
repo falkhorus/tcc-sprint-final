@@ -1,3 +1,216 @@
 <app-header></app-header>
 
 
+<main class="main-mural">
+
+    <!-- HERO DO MURAL -->
+    <section class="mural-hero">
+        <h1>Mural da Comunidade</h1>
+        <p>Descubra projetos incríveis da comunidade indie e compartilhe suas próprias criações</p>
+        
+        <button class="btn-add-projeto" (click)="abrirModal()">
+            + Adicionar Projeto
+        </button>
+    </section>
+
+    <!-- BARRA DE FILTROS -->
+    <section class="mural-filtros">
+        <div class="filtros-container">
+            
+            <!-- Busca por Texto -->
+            <div class="filtro-grupo esticado">
+                <label>Buscar Projetos</label>
+                <div class="input-icon">
+                    <span class="lupa">🔍</span>
+                    <input type="text" 
+                           placeholder="Nome, autor ou tags..." 
+                           [(ngModel)]="textoBusca">
+                </div>
+            </div>
+
+            <!-- Filtro por Gênero -->
+            <div class="filtro-grupo">
+                <label>Gênero</label>
+                <select [(ngModel)]="filtroGenero">
+                    <option value="">Todos</option>
+                    <option value="RPG">RPG</option>
+                    <option value="Ação">Ação</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="Plataforma">Plataforma</option>
+                    <option value="Estratégia">Estratégia</option>
+                    <option value="Simulação">Simulação</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                </select>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GRID DE PROJETOS -->
+    <section class="projetos-section">
+        
+        <div class="projetos-grid">
+            
+            <!-- CARTÃO DO PROJETO (Clicável para abrir detalhes) -->
+            <div class="card-projeto" *ngFor="let projeto of projetosFiltrados" (click)="abrirDetalhes(projeto)">
+                
+                <!-- Imagem de Capa -->
+                <div class="projeto-capa">
+                    <img [src]="projeto.imagem" alt="Capa do Jogo">
+                    <span class="status-tag" [class]="projeto.statusClass">{{ projeto.status }}</span>
+                </div>
+
+                <!-- Conteúdo -->
+                <div class="projeto-content">
+                    <div class="projeto-header">
+                        <h3>{{ projeto.titulo }}</h3>
+                        <span class="autor">por <strong>{{ projeto.autor }}</strong></span>
+                    </div>
+
+                    <!-- Descrição curta (CSS corta se for grande) -->
+                    <p class="descricao">{{ projeto.descricao }}</p>
+
+                    <!-- Tags -->
+                    <div class="tags-list">
+                        <span class="tag" *ngFor="let tag of projeto.tags">{{ tag }}</span>
+                    </div>
+
+                    <!-- Rodapé do Card -->
+                    <div class="card-footer">
+                        <span class="genero-label">{{ projeto.genero }}</span>
+                        <div class="social-stats">
+                            <!-- BOTÃO DE LIKE INTELIGENTE -->
+                            <button class="btn-like" 
+                                    [class.liked]="projeto.curtido" 
+                                    (click)="toggleLike(projeto, $event)">
+                                <span class="coracao">❤</span> {{ projeto.likes }}
+                            </button>
+                            <span>💬 {{ projeto.comentarios }}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- MODAL 1: ADICIONAR PROJETO (Já existente) -->
+    <!-- ============================================================ -->
+    <div class="modal-overlay" *ngIf="modalAberto">
+        <div class="modal-janela">
+            <div class="modal-header">
+                <h2>Adicionar Projeto</h2>
+                <button (click)="fecharModal()">✖</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nome do Projeto <span class="asterisco">*</span></label>
+                    <input type="text" [(ngModel)]="novoProjeto.titulo" placeholder="Nome do seu jogo">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Gênero <span class="asterisco">*</span></label>
+                        <select [(ngModel)]="novoProjeto.genero">
+                            <option value="">Selecione o gênero</option>
+                            <option value="RPG">RPG</option>
+                            <option value="Ação">Ação</option>
+                            <option value="Aventura">Aventura</option>
+                            <option value="Plataforma">Plataforma</option>
+                            <option value="Terror">Terror</option>
+                            <option value="Simulação">Simulação</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select [(ngModel)]="novoProjeto.status">
+                            <option value="Em Desenvolvimento">Em Desenvolvimento</option>
+                            <option value="Beta">Beta (Testes)</option>
+                            <option value="Lançado">Lançado</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descrição <span class="asterisco">*</span></label>
+                    <textarea rows="4" [(ngModel)]="novoProjeto.descricao" placeholder="Descreva seu projeto..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>URL da Foto de Capa</label>
+                    <input type="text" [(ngModel)]="novoProjeto.imagem" placeholder="https://exemplo.com/imagem.jpg">
+                </div>
+                <div class="form-group">
+                    <label>Link do Vídeo (YouTube)</label>
+                    <input type="text" [(ngModel)]="novoProjeto.video" placeholder="https://www.youtube.com/embed/...">
+                </div>
+                <div class="form-group">
+                    <label>Tags (separadas por vírgula)</label>
+                    <input type="text" [(ngModel)]="novoProjeto.tagsInput" placeholder="ex: Fantasy, Magic, Adventure">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancelar" (click)="fecharModal()">Cancelar</button>
+                <button class="btn-salvar" (click)="salvarProjeto()">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODAL 2: DETALHES DO PROJETO (NOVO!) -->
+    <!-- ============================================================ -->
+    <div class="modal-overlay" *ngIf="modalDetalhesAberto && projetoSelecionado">
+        <div class="modal-janela modal-largo"> <!-- modal-largo para ser maior -->
+            
+            <div class="modal-header">
+                <h2>{{ projetoSelecionado.titulo }}</h2>
+                <button (click)="fecharDetalhes()">✖</button>
+            </div>
+
+            <div class="modal-body">
+                
+                <!-- Mídia Principal (Vídeo ou Imagem) -->
+                <div class="media-container">
+                    <iframe *ngIf="projetoSelecionado.videoSafe" 
+                            [src]="projetoSelecionado.videoSafe" 
+                            frameborder="0" allowfullscreen></iframe>
+                    
+                    <img *ngIf="!projetoSelecionado.videoSafe" 
+                         [src]="projetoSelecionado.imagem" 
+                         alt="Capa Grande">
+                </div>
+
+                <!-- Informações -->
+                <div class="detalhes-info">
+                    <div class="status-badge" [class]="projetoSelecionado.statusClass">
+                        {{ projetoSelecionado.status }}
+                    </div>
+                    <span class="genero-tag">{{ projetoSelecionado.genero }}</span>
+                    <span class="autor">Criado por <strong>{{ projetoSelecionado.autor }}</strong></span>
+                </div>
+
+                <p class="descricao-completa">{{ projetoSelecionado.descricao }}</p>
+
+                <!-- Tags -->
+                <div class="tags-list">
+                    <span class="tag" *ngFor="let tag of projetoSelecionado.tags">{{ tag }}</span>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="social-stats-grande">
+                     <!-- Botão de Like Grande -->
+                     <button class="btn-like grande" 
+                             [class.liked]="projetoSelecionado.curtido" 
+                             (click)="toggleLike(projetoSelecionado, $event)">
+                        <span class="coracao">❤</span> {{ projetoSelecionado.likes }} Curtidas
+                    </button>
+                </div>
+                <button class="btn-cancelar" (click)="fecharDetalhes()">Fechar</button>
+            </div>
+
+        </div>
+    </div>
+
+</main>

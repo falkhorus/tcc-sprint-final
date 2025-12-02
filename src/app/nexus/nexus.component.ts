@@ -173,14 +173,24 @@ export class NexusComponent {
 
   // --- Funções do Perfil ---
   abrirModal() { 
-    this.modalAberto = true; }
+    this.modalAberto = true;
+    this.indexEdicaoTalento = -1; // Garante modo "Adicionar"
+    // Limpa o formulário
+    this.novoTalento = { nome: '', cargo: '', xp: '', local: '', foto: '', corCargo: '', valorHora: '', portifolio: '', biografia: '', habilidades: [], generos: [] };
+  }
+
+
   fecharModal() {
      this.modalAberto = false; }
 
   // --- Funções da Vaga ---
   abrirModalVaga() {
     this.modalVagaAberto = true;
+    this.indexEdicaoVaga = -1; // Garante modo "Adicionar"
+    // Limpa o formulário
+    this.novaVaga = { titulo: '', empresa: '', descricao: '', genero: '', salario: '', requisitos: '', tipo: '' };
   }
+
    fecharModalVaga() {
     this.modalVagaAberto = false;
   }
@@ -189,6 +199,10 @@ export class NexusComponent {
   // Inverte o valor: de false vira true, de true vira false
   talento.expandido = !talento.expandido;
   }
+
+  // Controle de Edição (-1 significa que não está editando ninguém)
+  indexEdicaoTalento: number = -1;
+  indexEdicaoVaga: number = -1;
   
 
   // --------------LÓGICA DE BUSCA----------------------
@@ -220,7 +234,7 @@ export class NexusComponent {
     });
   }
 
-  // -----LÓGICA PARA FILTRO DE TALENTOS-----
+  // -----LÓGICA PARA FILTRO DE VAGAS-----
 
   get vagasFiltradas() {
     const termo = this.textoBusca.toLowerCase();
@@ -277,32 +291,22 @@ export class NexusComponent {
   };
 
   // Função para SALVAR
-  salvarVaga() {        //  Cria o objeto final
-    
-    const vagaPronta = {
-      titulo: this.novaVaga.titulo,
-      empresa: this.novaVaga.empresa,
-      tipo: this.novaVaga.tipo,
-      descricao: this.novaVaga.descricao,
-      genero: this.novaVaga.genero,
-      salario: this.novaVaga.salario,
-      requisitos: this.novaVaga.requisitos,
+  salvarVaga() {
+    const vagaPronta = { ...this.novaVaga };
 
-      
-      
-      
-    };
+    if (this.indexEdicaoVaga > -1) {
+      // MODO EDIÇÃO
+      this.vagas[this.indexEdicaoVaga] = vagaPronta;
+    } else {
+      // MODO CRIAÇÃO
+      this.vagas.push(vagaPronta);
+    }
 
-    //  Empurra para a lista oficial (O card vai aparecer na hora!)
-    this.vagas.push(vagaPronta);
-
-    //  Limpa o formulário e fecha o modal
-    this.novaVaga = { 
-        titulo: '', empresa: '', descricao: '', genero: '', 
-        salario: '', requisitos: '', tipo: ''
-    };
     this.fecharModalVaga();
+
   }
+
+  
 
   // --------- LÓGICA: Objeto temporário para guardar ADICIONAR PERFIL (Talentos)------
 
@@ -350,60 +354,70 @@ export class NexusComponent {
 
 
 
+  // -------LÓGICA PARA TALENTOS-----
+
+  deletarTalento(index: number) {
+    if(confirm("Tem certeza que deseja excluir este perfil?")) {
+      this.talentos.splice(index, 1); // Remove 1 item na posição index
+    }
+  }
+
+  prepararEdicaoTalento(item: any, index: number) {
+    this.indexEdicaoTalento = index; // Guarda quem estamos editando
+    this.modalAberto = true; // Abre o modal
+    
+    // Copia os dados do card para o formulário (o ... chama-se Spread Operator)
+    this.novoTalento = { ...item }; 
+  }
+
+  // --------LÓGICA PARA VAGAS----------
+
+  deletarVaga(index: number) {
+    if(confirm("Tem certeza que deseja excluir esta vaga?")) {
+      this.vagas.splice(index, 1);
+    }
+  }
+
+  prepararEdicaoVaga(item: any, index: number) {
+    this.indexEdicaoVaga = index;
+    this.modalVagaAberto = true;
+    this.novaVaga = { ...item };
+  }
+
+
+
 
 
   // Função para SALVAR Talento
   salvarTalento() {
-
-    
-    // Busca na lista qual é a cor da profissão que o usuário escolheu
     const profissaoObj = this.listaProfissoes.find(p => p.nome === this.novoTalento.cargo);
-    const corFinal = profissaoObj ? profissaoObj.cor : '#000'; // Fallback preto
+    const corFinal = profissaoObj ? profissaoObj.cor : '#000';
 
     const talentoPronto = {
-
+      ...this.novoTalento, // Copia tudo que já está no rascunho
       
-      nome: this.novoTalento.nome,
-      cargo: this.novoTalento.cargo,
-      xp: this.novoTalento.xp,
-      local: this.novoTalento.local,
-      foto: this.novoTalento.foto || 'https://th.bing.com/th/id/OIP.XfxQMHh2_CFOhUhL7YCB-wHaFj?w=267&h=200&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3',  // adiciona um fallback se não tiver foto
-      corCargo: corFinal,
-      valorHora: this.novoTalento.valorHora,
-      portifolio: this.novoTalento.portifolio,
-      biografia: this.novoTalento.biografia,
-      habilidades: this.novoTalento.habilidades, // array
-      generos: this.novoTalento.generos          // array
-  
-
+      // Garante que o valorHora seja passado explicitamente (caso o spread operator falhe ou a ordem importe)
+      valorHora: this.novoTalento.valorHora, 
+      
+      foto: this.novoTalento.foto || 'https://th.bing.com/th/id/OIP.XfxQMHh2_CFOhUhL7YCB-wHaFj?w=267&h=200&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3',
+      corCargo: corFinal
     };
-    
-    this.talentos.push(talentoPronto);
-    
 
-
-    this.novoTalento = {
-    nome: '',
-    cargo: '',
-    xp: '',
-    local: '',
-    foto: '',
-    corCargo: '',
-    valorHora: '',
-    portifolio: '',
-    biografia: '',
-    habilidades: [],
-    generos: [],
-
+    if (this.indexEdicaoTalento > -1) {
+      this.talentos[this.indexEdicaoTalento] = talentoPronto;
+    } else {
+      this.talentos.push(talentoPronto);
     }
 
+    // Limpa o formulário
+    this.novoTalento = {
+      nome: '', cargo: '', xp: '', local: '', foto: '', 
+      corCargo: '', valorHora: '', portifolio: '', biografia: '', 
+      habilidades: [], generos: []
+    };
+
     this.fecharModal();
-
-
-
-
-
-  }        
+  }
 
 
   // Cria essa lista definindo Nome e Cor Hexadecimal
