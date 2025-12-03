@@ -1,0 +1,163 @@
+<app-header></app-header>
+
+<main class="perfil-container">
+
+    <section class="perfil-banner">
+        <div class="info-usuario-banner">
+            <img [src]="meuPerfil.fotoUrl" alt="Foto de Perfil" class="avatar-grande">
+            <div class="textos-banner">
+                <h1>{{ meuPerfil.nome }}</h1>
+                <p>{{ meuPerfil.profissao }}</p>
+            </div>
+        </div>
+
+        <div class="card-recompensas">
+            <div class="moedas-info">
+                <span class="icone-moeda">🪙</span>
+                <span class="valor-moedas">{{ meuPerfil.moedas }}</span>
+            </div>
+            <p class="label-moedas">Moedas Indie</p>
+            <button class="btn-recompensa">🎁 Recompensa Diária</button>
+        </div>
+    </section>
+
+
+    <section class="perfil-conteudo">
+        <div class="cabecalho-conteudo">
+            <h2>Informações do Perfil</h2>
+            <button class="btn-editar-roxo" (click)="abrirModalEdicao()">Editar Perfil</button>
+        </div>
+
+        <div class="grid-informacoes">
+            <div class="coluna-info">
+                <h3>Informações Básicas</h3>
+                
+                <div class="item-info">
+                    <label>E-mail:</label>
+                    <p>{{ meuPerfil.email }}</p>
+                </div>
+                
+                <div class="item-info" *ngIf="meuPerfil.localizacao">
+                    <label>Localização:</label>
+                    <p>{{ meuPerfil.localizacao }}</p>
+                </div>
+
+                <div class="item-info" *ngIf="meuPerfil.biografia">
+                    <label>Biografia:</label>
+                    <p class="texto-bio">{{ meuPerfil.biografia }}</p>
+                </div>
+            </div>
+
+             <div class="coluna-info">
+                <h3>Links Sociais</h3>
+                <div class="lista-links">
+                    <a *ngIf="meuPerfil.linksSociais.github" [href]="meuPerfil.linksSociais.github" target="_blank" class="link-social">GitHub 🔗</a>
+                    <a *ngIf="meuPerfil.linksSociais.linkedin" [href]="meuPerfil.linksSociais.linkedin" target="_blank" class="link-social">LinkedIn 🔗</a>
+                    <a *ngIf="meuPerfil.linksSociais.website" [href]="meuPerfil.linksSociais.website" target="_blank" class="link-social">Website 🔗</a>
+                </div>
+
+                <h3 style="margin-top: 30px;">Habilidades</h3>
+                <div class="tags-visualizacao">
+                    <span class="tag-skill" *ngFor="let skill of meuPerfil.habilidades">{{ skill }}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<div class="modal-overlay" *ngIf="modalAberto">
+    <div class="modal-janela modal-largo">
+        <div class="modal-header">
+            <h2>Editar Perfil</h2>
+            <button class="btn-fechar" (click)="fecharModal()">✖</button>
+        </div>
+
+        <div class="modal-body">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" [(ngModel)]="perfilEmEdicao.nome">
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" [(ngModel)]="perfilEmEdicao.email" disabled style="background-color: #f3f4f6; cursor: not-allowed;">
+                </div>
+            </div>
+
+             <div class="form-row">
+                <div class="form-group">
+                    <label>Profissão</label>
+                    <select [(ngModel)]="perfilEmEdicao.profissao">
+                        <option value="">Selecione</option>
+                        <option *ngFor="let prof of listaProfissoes" [value]="prof">{{ prof }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Localização</label>
+                    <input type="text" [(ngModel)]="perfilEmEdicao.localizacao" placeholder="Cidade, Estado">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Experiência</label>
+                    <input type="text" [(ngModel)]="perfilEmEdicao.experiencia" placeholder="ex: 3 anos">
+                </div>
+                <div class="form-group">
+                    <label>Portfolio</label>
+                    <input type="text" [(ngModel)]="perfilEmEdicao.portfolio" placeholder="https://meuportfolio.com">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Biografia</label>
+                <textarea rows="4" [(ngModel)]="perfilEmEdicao.biografia" placeholder="Fale sobre você..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label style="margin-top: 20px; display: block;">Habilidades</label>
+                <div class="tags-selecao-container">
+                    <button 
+                        type="button"
+                        class="btn-tag-selecionavel" 
+                        *ngFor="let skill of listaHabilidadesDisponiveis"
+                        [class.selecionado]="habilidadeEstaSelecionada(skill)"
+                        (click)="alternarHabilidade(skill)">
+                        {{ skill }}
+                    </button>
+                </div>
+            </div>
+
+             <h3 style="margin-top: 30px; margin-bottom: 15px; color: #374151;">Links Sociais</h3>
+             <div class="form-row">
+                <div class="form-group">
+                    <label>GitHub</label>
+                    <input type="text" [(ngModel)]="perfilEmEdicao.linksSociais.github" placeholder="https://github.com/usuario">
+                </div>
+                <div class="form-group">
+                    <label>LinkedIn</label>
+                    <input type="text" [(ngModel)]="perfilEmEdicao.linksSociais.linkedin" placeholder="https://linkedin.com/in/usuario">
+                </div>
+             </div>
+             <div class="form-row">
+                <div class="form-group">
+                    <label>Twitter/X</label>
+                    <input type="text" [(ngModel)]="perfilEmEdicao.linksSociais.twitter" placeholder="https://twitter.com/usuario">
+                </div>
+                <div class="form-group">
+                    <label>Website Pessoal</label>
+                    <input type="text" [(ngModel)]="perfilEmEdicao.linksSociais.website" placeholder="https://meusite.com">
+                </div>
+             </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-cancelar" (click)="fecharModal()">Cancelar</button>
+            <button class="btn-salvar-modal" (click)="salvarAlteracoes()">Salvar Alterações</button>
+        </div>
+    </div>
+</div>

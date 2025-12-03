@@ -4,6 +4,8 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { NexusComponent } from './nexus/nexus.component';
 import { MuralComponent } from './mural/mural.component';
+import { TermosComponent } from './termos/termos.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 export const routes: Routes = [
 
@@ -15,7 +17,10 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent} ,
     {path: 'register', component: RegisterComponent},
     { path: 'nexus', component: NexusComponent },  
-    { path: 'mural', component: MuralComponent }
+    { path: 'mural', component: MuralComponent },
+    { path: 'home', component: HomeComponent},
+    { path: 'termos',  component: TermosComponent},
+    { path: 'perfil', component: PerfilComponent}
 
 
 

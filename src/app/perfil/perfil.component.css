@@ -1,0 +1,294 @@
+/* Variáveis de Cor do Projeto (Reutilizando) */
+:host {
+    --cor-primaria: #9333EA; /* Roxo */
+    --cor-primaria-hover: #7e22ce;
+    --cor-fundo-claro: #f9fafb;
+    --cor-texto-escuro: #1f2937;
+    --cor-texto-medio: #4b5563;
+    --cor-borda: #e5e7eb;
+}
+
+.perfil-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ============================================================
+   PARTE 1: BANNER ROXO
+   ============================================================ */
+.perfil-banner {
+    background-color: var(--cor-primaria);
+    border-radius: 20px 20px 0 0; /* Arredondado só em cima */
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.info-usuario-banner {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.avatar-grande {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    background-color: white;
+}
+
+.textos-banner h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-family: 'Quantico', sans-serif;
+}
+
+.textos-banner p {
+    margin: 5px 0 0 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Card de Recompensas (Direita) */
+.card-recompensas {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 20px 30px;
+    border-radius: 16px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.moedas-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: 'Quantico', sans-serif;
+}
+
+.label-moedas {
+    margin: 5px 0 15px 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.btn-recompensa {
+    background-color: #FACC15; /* Amarelo */
+    color: #713f12;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 100%;
+}
+
+.btn-recompensa:hover {
+    transform: scale(1.05);
+    background-color: #eab308;
+}
+
+/* ============================================================
+   PARTE 2: CONTEÚDO BRANCO
+   ============================================================ */
+.perfil-conteudo {
+    background-color: white;
+    border-radius: 0 0 20px 20px; /* Arredondado só embaixo */
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid var(--cor-borda);
+    border-top: none; /* Remove borda superior para juntar com o banner */
+}
+
+.cabecalho-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.cabecalho-conteudo h2 {
+    margin: 0;
+    color: var(--cor-texto-escuro);
+    font-family: 'Quantico', sans-serif;
+}
+
+.btn-editar-roxo {
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-editar-roxo:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* Grid de Informações (Duas Colunas) */
+.grid-informacoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 60px;
+}
+
+.coluna-info h3 {
+    color: var(--cor-texto-escuro);
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+}
+
+.item-info {
+    margin-bottom: 20px;
+}
+
+.item-info label {
+    display: block;
+    font-weight: 600;
+    color: var(--cor-texto-medio);
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.item-info p {
+    margin: 0;
+    color: var(--cor-texto-escuro);
+    font-size: 1rem;
+}
+
+.texto-bio {
+    line-height: 1.6;
+    color: var(--cor-texto-medio);
+}
+
+/* Links e Tags */
+.lista-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.link-social {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: opacity 0.2s;
+}
+
+.link-social:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.tags-visualizacao {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-skill {
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-texto-medio);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--cor-borda);
+}
+
+/* ============================================================
+   ESTILOS DO MODAL (Reutilizando base dos anteriores)
+   ============================================================ */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); z-index: 1000;
+    display: flex; justify-content: center; align-items: center;
+    padding: 20px; /* Espaço para não colar na borda em telas pequenas */
+}
+
+.modal-janela {
+    background-color: white; width: 100%; border-radius: 16px;
+    padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    max-height: 90vh; display: flex; flex-direction: column;
+}
+
+.modal-largo { max-width: 800px; }
+
+.modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 25px;
+}
+.modal-header h2 { margin: 0; font-family: 'Quantico', sans-serif; color: var(--cor-texto-escuro); }
+.btn-fechar { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #9ca3af; }
+
+.modal-body {
+    overflow-y: auto; /* Permite scroll no formulário */
+    padding-right: 10px; /* Espaço para a barra de rolagem */
+    flex: 1; /* Ocupa o espaço disponível */
+}
+
+/* Formulários do Modal */
+.form-row { display: flex; gap: 20px; margin-bottom: 20px; }
+.form-group { flex: 1; margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--cor-texto-escuro); font-size: 0.9rem; }
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px; border: 1px solid var(--cor-borda);
+    border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+    box-sizing: border-box; /* Importante para o padding não estourar a largura */
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none; border-color: var(--cor-primaria);
+}
+
+/* Tags Selecionáveis (Botões) */
+.tags-selecao-container { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn-tag-selecionavel {
+    background-color: white; border: 1px solid var(--cor-borda);
+    color: var(--cor-texto-medio); padding: 8px 16px; border-radius: 6px;
+    cursor: pointer; font-weight: 600; font-size: 0.9rem;
+    transition: all 0.2s;
+}
+.btn-tag-selecionavel:hover { background-color: var(--cor-fundo-claro); border-color: #d1d5db; }
+
+/* Classe ativada dinamicamente pelo Angular */
+.btn-tag-selecionavel.selecionado {
+    background-color: var(--cor-primaria); color: white; border-color: var(--cor-primaria);
+}
+
+/* Footer do Modal */
+.modal-footer {
+    display: flex; justify-content: flex-end; gap: 15px;
+    padding-top: 25px; border-top: 1px solid var(--cor-borda);
+    margin-top: 20px;
+}
+.btn-cancelar {
+    background: white; border: 1px solid var(--cor-borda); color: var(--cor-texto-medio);
+    padding: 12px 25px; border-radius: 8px; font-weight: 600; cursor: pointer;
+}
+.btn-salvar-modal {
+    background-color: var(--cor-primaria); color: white; border: none;
+    padding: 12px 30px; border-radius: 8px; font-weight: 600; cursor: pointer;
+}
+.btn-salvar-modal:hover { background-color: var(--cor-primaria-hover); }
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+    .perfil-banner { flex-direction: column; text-align: center; gap: 20px; }
+    .info-usuario-banner { flex-direction: column; }
+    .grid-informacoes { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { flex-direction: column; gap: 0; }
+}
