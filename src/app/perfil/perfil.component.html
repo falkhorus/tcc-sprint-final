@@ -14,7 +14,7 @@
         <div class="card-recompensas">
             <div class="moedas-info">
                 <span class="icone-moeda">🪙</span>
-                <span class="valor-moedas">{{ meuPerfil.moedas }}</span>
+                <span class="valor-moedas">{{ meuPerfil.moedas || 0 }}</span>
             </div>
             <p class="label-moedas">Moedas Indie</p>
             <button class="btn-recompensa">🎁 Recompensa Diária</button>
@@ -46,6 +46,16 @@
                     <label>Biografia:</label>
                     <p class="texto-bio">{{ meuPerfil.biografia }}</p>
                 </div>
+                
+                <div class="item-info" *ngIf="meuPerfil.experiencia">
+                    <label>Experiência:</label>
+                    <p>{{ meuPerfil.experiencia }}</p>
+                </div>
+                
+                <div class="item-info" *ngIf="meuPerfil.portfolio">
+                    <label>Portfolio:</label>
+                    <a [href]="meuPerfil.portfolio" target="_blank" style="color: #9333EA; text-decoration: none;">Acessar Portfolio</a>
+                </div>
             </div>
 
              <div class="coluna-info">
@@ -53,12 +63,20 @@
                 <div class="lista-links">
                     <a *ngIf="meuPerfil.linksSociais.github" [href]="meuPerfil.linksSociais.github" target="_blank" class="link-social">GitHub 🔗</a>
                     <a *ngIf="meuPerfil.linksSociais.linkedin" [href]="meuPerfil.linksSociais.linkedin" target="_blank" class="link-social">LinkedIn 🔗</a>
+                    <a *ngIf="meuPerfil.linksSociais.twitter" [href]="meuPerfil.linksSociais.twitter" target="_blank" class="link-social">Twitter 🔗</a>
                     <a *ngIf="meuPerfil.linksSociais.website" [href]="meuPerfil.linksSociais.website" target="_blank" class="link-social">Website 🔗</a>
+                    
+                    <p *ngIf="!meuPerfil.linksSociais.github && !meuPerfil.linksSociais.linkedin && !meuPerfil.linksSociais.website" style="color: #9ca3af; font-style: italic;">
+                        Nenhum link social adicionado.
+                    </p>
                 </div>
 
                 <h3 style="margin-top: 30px;">Habilidades</h3>
                 <div class="tags-visualizacao">
                     <span class="tag-skill" *ngFor="let skill of meuPerfil.habilidades">{{ skill }}</span>
+                    <p *ngIf="meuPerfil.habilidades.length === 0" style="color: #9ca3af; font-style: italic;">
+                        Nenhuma habilidade selecionada.
+                    </p>
                 </div>
             </div>
         </div>
@@ -76,6 +94,17 @@
 
         <div class="modal-body">
             
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label>URL da Foto de Perfil</label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <input type="text" [(ngModel)]="perfilEmEdicao.fotoUrl" placeholder="https://exemplo.com/minhafoto.jpg">
+                    <img [src]="perfilEmEdicao.fotoUrl || 'https://via.placeholder.com/40'" 
+                         alt="Preview" 
+                         style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc;">
+                </div>
+                <small style="color: #6b7280; font-size: 0.8rem;">Cole o link de uma imagem da internet.</small>
+            </div>
+
             <div class="form-row">
                 <div class="form-group">
                     <label>Nome</label>
@@ -83,7 +112,7 @@
                 </div>
                 <div class="form-group">
                     <label>E-mail</label>
-                    <input type="email" [(ngModel)]="perfilEmEdicao.email" disabled style="background-color: #f3f4f6; cursor: not-allowed;">
+                    <input type="email" [(ngModel)]="perfilEmEdicao.email" disabled style="background-color: #f3f4f6; cursor: not-allowed; color: #6b7280;" title="O email não pode ser alterado">
                 </div>
             </div>
 

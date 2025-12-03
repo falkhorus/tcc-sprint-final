@@ -117,3 +117,62 @@
     text-align: center;
     margin-top: 15px;
 }
+
+/* --- CHECKBOX E TERMOS --- */
+.termos-container {
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center; /* Alinha a caixinha com o texto */
+    gap: 10px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0; /* Remove margem padrão */
+    accent-color: #9333EA; /* Deixa a caixinha roxa quando marcada */
+}
+
+.checkbox-wrapper label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #4b5563;
+    cursor: pointer;
+    margin: 0;
+    font-weight: 400; /* Tira o negrito padrão do label */
+}
+
+.checkbox-wrapper a {
+    color: #9333EA;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.checkbox-wrapper a:hover {
+    text-decoration: underline;
+}
+
+/* MENSAGEM DE ERRO */
+.erro-termos {
+    color: #ef4444; /* Vermelho alerta */
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    margin-top: 8px;
+    font-weight: 600;
+    animation: tremer 0.3s ease-in-out;
+}
+
+/* Animaçãozinha de tremer para chamar atenção */
+@keyframes tremer {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}

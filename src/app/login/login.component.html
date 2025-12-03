@@ -1,34 +1,46 @@
 <main class="main-login">
     <div class="login-conteudo">
-<header>
-<h1 class="titulo-login">Indie<span class="hub-texto">[HUB]</span> </h1>
-<P class="paragrafo-login">Entre na comunidade de <span class="gamedevs-texto">gamedevs</span> independentes</P>
-</header>
+        <header>
+            <h1 class="titulo-login">Indie<span class="hub-texto">[HUB]</span> </h1>
+            <P class="paragrafo-login">Entre na comunidade de <span class="gamedevs-texto">gamedevs</span> independentes</P>
+        </header>
 
-<form action="">
+        <form (ngSubmit)="entrar()">
 
-<div class="input-email-senha">
-    <div class="input-grupo">
-    <label  for="email-input">Email</label>
-    <input id="email-input"  type="email" placeholder="Digite seu email">
+            <div class="input-email-senha">
+                <div class="input-grupo">
+                    <label for="email-input">Email</label>
+                    <input id="email-input" 
+                           type="email" 
+                           placeholder="Digite seu email"
+                           [(ngModel)]="loginDados.email"
+                           name="email">
+                </div>
+                
+                <div class="input-grupo">
+                    <label for="password-input">Senha</label>
+                    <input id="password-input" 
+                           type="password" 
+                           placeholder="Digite sua senha"
+                           [(ngModel)]="loginDados.senha"
+                           name="senha">
+                </div>
+            </div>
+
+            <!-- Exibe erro visualmente se falhar -->
+            <p *ngIf="erroLogin" style="color: red; font-size: 0.9rem; margin-top: 5px;">
+                ⚠️ Email ou senha incorretos.
+            </p>
+
+            <div class="botoes-login">
+                <button type="submit" class="botao-enviar">Entrar</button>
+                <button type="button" class="botao-login-rapido" (click)="loginRapido()">Login Rápido (Dev)</button>
+            </div>
+            
+            <div class="span-login">
+                <span>Não tem conta?</span> <a routerLink="/register">Cadastre-se</a>
+            </div>
+
+        </form>
     </div>
-    
-    <div class="input-grupo">
-    <label  for="password-input">Senha</label>
-    <input id="password-input" type="password" placeholder="Digite sua senha">
-    </div>
-
-</div>
-
-<div class="botoes-login">
-    <button class="botao-enviar">Entrar</button>
-    <button class="botao-login-rapido">Login Rápido</button>
-</div>
-<div class="span-login">
-    <span>Não tem conta?</span> <a routerLink="/register">Cadastre-se</a>
-</div>
-
-
-</form>
-</div>
 </main>
