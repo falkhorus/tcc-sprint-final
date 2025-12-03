@@ -65,7 +65,7 @@
 }
 
 .filtro-grupo.esticado {
-    flex: 1; 
+    flex: 1; /* Ocupa o espaço restante */
     min-width: 300px;
 }
 
@@ -75,6 +75,7 @@
     color: #374151;
 }
 
+/* Input com Ícone */
 .input-icon {
     position: relative;
     width: 100%;
@@ -91,12 +92,11 @@
 
 .input-icon input {
     width: 100%;
-    padding: 12px 12px 12px 40px; 
+    padding: 12px 12px 12px 40px; /* Espaço para a lupa */
     border: 1px solid #d1d5db;
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
-    outline: none;
 }
 .input-icon input:focus {
     border-color: #9333EA;
@@ -109,7 +109,6 @@ select {
     min-width: 200px;
     font-family: 'Inter', sans-serif;
     background-color: white;
-    outline: none;
 }
 select:focus {
     border-color: #9333EA;
@@ -132,7 +131,8 @@ select:focus {
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
-    cursor: pointer; /* Mãozinha para indicar que abre modal */
+    cursor: pointer; 
+    position: relative; /* Importante para os botões de ação */
 }
 
 .card-projeto:hover {
@@ -141,6 +141,50 @@ select:focus {
     border-color: #9333EA;
 }
 
+/* BOTÕES DE AÇÃO (Editar/Excluir) */
+.card-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.2s;
+    z-index: 10; 
+}
+
+.card-projeto:hover .card-actions {
+    opacity: 1; /* Aparece no hover */
+}
+
+.btn-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    backdrop-filter: blur(2px);
+}
+
+.btn-icon.editar:hover {
+    background-color: #9333EA;
+    color: white;
+    border-color: #9333EA;
+}
+
+.btn-icon.excluir:hover {
+    background-color: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+/* Capa */
 .projeto-capa {
     height: 200px;
     overflow: hidden;
@@ -158,6 +202,7 @@ select:focus {
     transform: scale(1.05); 
 }
 
+/* Tag de Status */
 .status-tag {
     position: absolute;
     bottom: 10px;
@@ -174,6 +219,7 @@ select:focus {
 .status-beta { color: #d97706; } 
 .status-lancado { color: #059669; } 
 
+/* Conteúdo do Card */
 .projeto-content {
     padding: 20px;
     flex: 1;
@@ -199,13 +245,14 @@ select:focus {
     margin: 15px 0;
     flex: 1; 
     
-    /* Limita a 3 linhas para não quebrar o card */
+    /* Limita a 3 linhas */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
+/* Tags Pequenas */
 .tags-list {
     display: flex;
     gap: 8px;
@@ -259,11 +306,10 @@ select:focus {
 }
 
 .coracao {
-    color: #9ca3af; /* Cinza quando não curtido */
+    color: #9ca3af;
     transition: color 0.2s;
 }
 
-/* ESTADO CURTIDO (VERMELHO) */
 .btn-like.liked {
     color: #ef4444;
     font-weight: 600;
@@ -274,9 +320,9 @@ select:focus {
     color: #ef4444;
 }
 
-/* --- MODAL DE DETALHES (Estilos Específicos) --- */
+/* --- MODAL DE DETALHES --- */
 .modal-largo {
-    max-width: 800px; /* Mais largo que o formulário */
+    max-width: 800px;
 }
 
 .media-container {
@@ -295,7 +341,7 @@ select:focus {
 .media-container iframe {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Mostra imagem inteira */
+    object-fit: contain;
 }
 
 .detalhes-info {
@@ -324,7 +370,7 @@ select:focus {
     line-height: 1.6;
     color: #374151;
     margin-bottom: 25px;
-    white-space: pre-line; /* Respeita quebras de linha do texto */
+    white-space: pre-line;
 }
 
 .social-stats-grande {
@@ -336,11 +382,108 @@ select:focus {
     padding: 10px 20px;
 }
 
+/* --- ÁREA DE COMENTÁRIOS --- */
+.area-comentarios {
+    margin-top: 30px;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 20px;
+}
+
+.area-comentarios h3 {
+    font-size: 1.1rem;
+    color: #1f2937;
+    margin-bottom: 15px;
+    font-family: 'Quantico', sans-serif;
+}
+
+.lista-msgs {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding-right: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.msg-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.avatar-mini {
+    width: 30px;
+    height: 30px;
+    background-color: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.balao-msg {
+    background-color: #f9fafb;
+    padding: 10px 15px;
+    border-radius: 0 12px 12px 12px;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.balao-msg strong {
+    display: block;
+    color: #9333EA;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+}
+
+.balao-msg p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.sem-comentarios {
+    color: #9ca3af;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.input-comentario {
+    display: flex;
+    gap: 10px;
+}
+
+.input-comentario input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 20px;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.input-comentario input:focus {
+    border-color: #9333EA;
+}
+
+.input-comentario button {
+    background-color: #9333EA;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.input-comentario button:hover {
+    background-color: #7e22ce;
+}
 
 /* ============================================================ */
-/* ESTILOS DO MODAL (Base - Igual ao Nexus) */
+/* ESTILOS DO MODAL (Base) */
 /* ============================================================ */
-/* ... (Mantive o mesmo CSS do modal anterior para não quebrar) ... */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -357,7 +500,7 @@ select:focus {
 .modal-janela {
     background-color: white;
     width: 90%;
-    max-width: 600px; /* Padrão para formulários */
+    max-width: 600px;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -365,7 +508,6 @@ select:focus {
     animation: aparecer 0.3s ease-out;
 }
 
-/* Caso específico para o modal de detalhes ser maior */
 .modal-janela.modal-largo {
     max-width: 800px;
 }
