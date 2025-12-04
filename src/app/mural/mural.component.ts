@@ -43,22 +43,74 @@ export class MuralComponent {
 
   projetos: Projeto[] = [
     {
-      titulo: 'Mystic Realms',
+      titulo: 'Celeste',
       autor: 'Ana Silva',
+      descricao: 'Um jogo de aventura inovador sobre superação.',
+      imagem: '/celeste.png',
+      video: 'https://www.youtube.com/watch?v=70d9irlxiB4',
+      genero: 'Aventura',
+      status: 'Lançado',
+      statusClass: 'status-dev',
+      tags: ['Fantasy', 'aventura'],
+      likes: 36,
+      curtido: false,
+      comentarios: 1,
+      listaComentarios: ['Gosto muito desse jogo, fez parte da minha infância!']
+    },
+
+
+
+    {
+      titulo: 'Gladius',
+      autor: 'Carlos Santos',
+      descricao: 'Um jogo de luta com mecânicas sinistras.',
+      imagem: '/gladius.png',
+      video: 'https://www.youtube.com/watch?v=O8l5Yd4wOSc', 
+      genero: 'RPG',
+      status: 'Em Desenvolvimento',
+      statusClass: 'status-dev',
+      tags: ['Luta', 'Jogo VR'],
+      likes: 0,
+      curtido: false,
+      comentarios: 1,
+      listaComentarios: ['Jogão, joguei demias com meu filho, esse game.']
+    },
+
+    {
+      titulo: 'Cyber Cars',
+      autor: 'Maria Oliveira',
       descricao: 'Um RPG de fantasia com mecânicas inovadoras.',
-      imagem: 'https://cdn.discordapp.com/attachments/1432328327707758635/1443341619347718338/eSTYsqFbNtdwlbkdCcvpa6sZ3WtXsPaKaF2Wyv5qeUGymROCLCddeKdNOzZRcmAAA.png?ex=6928b822&is=692766a2&hm=224fc86a8266c59afb1802044a4f7e5f91ec80de3854f8e274c66dbd8c82faee&',
-      // Exemplo de vídeo real do YouTube (Trailer de Celeste)
-      video: 'https://www.youtube.com/watch?v=70d9irlxiB4', 
+      imagem: '/cybercars.png',
+      video: 'https://www.youtube.com/watch?v=VPpnqIH2YT0', 
       genero: 'RPG',
       status: 'Em Desenvolvimento',
       statusClass: 'status-dev',
       tags: ['Fantasy', 'Turn-based'],
-      likes: 42,
+      likes: 0,
       curtido: false,
-      comentarios: 2,
-      listaComentarios: ['Incrível!']
+      comentarios: 1,
+      listaComentarios: ['esse game de carro é massa'],
+      
     },
-    // ... seus outros projetos ...
+
+
+    {
+      titulo: 'Caramelo o jogo',
+      autor: 'João Costa',
+      descricao: 'Um RPG de fantasia com mecânicas inovadoras.',
+      imagem: '/caramelo.png',
+      video: 'https://www.youtube.com/watch?v=WJ77mTMs110', 
+      genero: 'RPG',
+      status: 'Em Desenvolvimento',
+      statusClass: 'status-dev',
+      tags: ['Fantasy', 'Turn-based'],
+      likes: 0,
+      curtido: false,
+      comentarios: 1,
+      listaComentarios: ['Que massa, até que em fim fizeram um jogo do caramelo kkkkkk']
+    },
+
+    
   ];
 
   novoProjeto = {
