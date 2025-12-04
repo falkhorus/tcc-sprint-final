@@ -58,7 +58,7 @@
     align-items: center;
     padding: 50px;
     margin: 0px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(152, 115, 255, 0.7)),  url(https://media.discordapp.net/attachments/1432328327707758635/1442518390911537152/image.png?ex=6925b971&is=692467f1&hm=a4a798cbb64211c711254f7cdf402d55bdb42f413f30bf90e7a5e0e22f518e85&=&format=webp&quality=lossless);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(152, 115, 255, 0.7)),  url(/bg_imagem.png);
     background-repeat: no-repeat;
     background-size: cover;
     
