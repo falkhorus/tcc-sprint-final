@@ -1,5 +1,6 @@
 <app-header></app-header>
 
+<div class="div-main">
 <main class="main-mural">
 
     <!-- HERO DO MURAL -->
@@ -28,13 +29,33 @@
                 <label>Gênero</label>
                 <select [(ngModel)]="filtroGenero">
                     <option value="">Todos</option>
-                    <option value="RPG">RPG</option>
-                    <option value="Ação">Ação</option>
-                    <option value="Aventura">Aventura</option>
-                    <option value="Plataforma">Plataforma</option>
-                    <option value="Estratégia">Estratégia</option>
-                    <option value="Simulação">Simulação</option>
-                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="rpg">RPG</option>
+                        <option value="acao">Ação</option>
+                        <option value="aventura">Aventura</option>
+                        <option value="plataforma">Plataforma</option>
+                        <option value="puzzle">Puzzle</option>
+                        <option value="estrategia">Estratégia</option>
+                        <option value="simulacao">Simulação</option>
+                        <option value="terror">Terror / Horror</option>
+                        <option value="sobrevivencia">Sobrevivência</option>
+                        <option value="fps">FPS (Tiro em 1ª Pessoa)</option>
+                        <option value="shooter">Shooter (Geral)</option>
+                        <option value="roguelike">Roguelike / Roguelite</option>
+                        <option value="metroidvania">Metroidvania</option>
+                        <option value="visual-novel">Visual Novel</option>
+                        <option value="luta">Luta</option>
+                        <option value="esportes">Esportes</option>
+                        <option value="corrida">Corrida</option>
+                        <option value="cartas">Card Game (Cartas)</option>
+                        <option value="ritmo">Ritmo / Musical</option>
+                        <option value="battle-royale">Battle Royale</option>
+                        <option value="sandbox">Sandbox / Mundo Aberto</option>
+                        <option value="moba">MOBA</option>
+                        <option value="stealth">Stealth (Furtividade)</option>
+                        <option value="cozy">Cozy (Relaxante)</option>
+                        <option value="educativo">Educativo</option>
+                        <option value="point-and-click">Point and Click</option>
+                        <option value="arcade">Arcade</option>
                 </select>
             </div>
 
@@ -48,7 +69,7 @@
                 
                 <!-- BOTÕES DE AÇÃO -->
                 <div class="card-actions">
-                    <button class="btn-icon editar" (click)="prepararEdicao(projeto, $event)">✏️</button>
+                    <button class="btn-icon editar" (click)="prepararEdicao(projeto, $event)">✎</button>
                     <button class="btn-icon excluir" (click)="deletarProjeto(projeto, $event)">🗑️</button>
                 </div>
 
@@ -79,9 +100,9 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
+    
     <!-- MODAL: ADICIONAR/EDITAR PROJETO -->
-    <!-- ============================================================ -->
+    
     <div class="modal-overlay" *ngIf="modalAberto">
         <div class="modal-janela">
             
@@ -102,14 +123,35 @@
                     <div class="form-group">
                         <label>Gênero <span class="asterisco">*</span></label>
                         <select [(ngModel)]="novoProjeto.genero">
-                            <option value="">Selecione o gênero</option>
-                            <option value="RPG">RPG</option>
-                            <option value="Ação">Ação</option>
-                            <option value="Aventura">Aventura</option>
-                            <option value="Plataforma">Plataforma</option>
-                            <option value="Terror">Terror</option>
-                            <option value="Simulação">Simulação</option>
-                            <option value="Sci-Fi">Sci-Fi</option>
+
+                        <option value="">Selecione o gênero</option>
+                        <option value="rpg">RPG</option>
+                        <option value="acao">Ação</option>
+                        <option value="aventura">Aventura</option>
+                        <option value="plataforma">Plataforma</option>
+                        <option value="puzzle">Puzzle</option>
+                        <option value="estrategia">Estratégia</option>
+                        <option value="simulacao">Simulação</option>
+                        <option value="terror">Terror / Horror</option>
+                        <option value="sobrevivencia">Sobrevivência</option>
+                        <option value="fps">FPS (Tiro em 1ª Pessoa)</option>
+                        <option value="shooter">Shooter (Geral)</option>
+                        <option value="roguelike">Roguelike / Roguelite</option>
+                        <option value="metroidvania">Metroidvania</option>
+                        <option value="visual-novel">Visual Novel</option>
+                        <option value="luta">Luta</option>
+                        <option value="esportes">Esportes</option>
+                        <option value="corrida">Corrida</option>
+                        <option value="cartas">Card Game (Cartas)</option>
+                        <option value="ritmo">Ritmo / Musical</option>
+                        <option value="battle-royale">Battle Royale</option>
+                        <option value="sandbox">Sandbox / Mundo Aberto</option>
+                        <option value="moba">MOBA</option>
+                        <option value="stealth">Stealth (Furtividade)</option>
+                        <option value="cozy">Cozy (Relaxante)</option>
+                        <option value="educativo">Educativo</option>
+                        <option value="point-and-click">Point and Click</option>
+                        <option value="arcade">Arcade</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -159,7 +201,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE DETALHES (Mantenha o que já existe no seu código ou adicione se faltar) -->
+    <!-- MODAL DE DETALHES -->
     <div class="modal-overlay" *ngIf="modalDetalhesAberto && projetoSelecionado">
         <div class="modal-janela modal-largo">
             <div class="modal-header">
@@ -216,3 +258,4 @@
     </div>
 
 </main>
+</div>

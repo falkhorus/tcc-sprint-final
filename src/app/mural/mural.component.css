@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Quantico:wght@700&family=Inter:wght@400;600&display=swap');
 
+.div-main {
+    width: 100%;
+    background-color: #ffefd8;
+}
+
 .main-mural {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
     font-family: 'Inter', sans-serif;
+    
 }
 
 /* --- HERO --- */
@@ -16,18 +22,18 @@
 .mural-hero h1 {
     font-family: 'Quantico', sans-serif;
     font-size: 2.5rem;
-    color: #1f2937;
+    color: #d97706;
     margin-bottom: 10px;
 }
 
 .mural-hero p {
-    color: #6b7280;
+    color: #703c00;
     font-size: 1.1rem;
     margin-bottom: 30px;
 }
 
 .btn-add-projeto {
-    background-color: #9333EA;
+    background-color: #f9a413;
     color: white;
     border: none;
     padding: 12px 30px;
@@ -39,15 +45,15 @@
 }
 
 .btn-add-projeto:hover {
-    background-color: #7e22ce;
+    background-color: #d97706;
 }
 
 /* --- BARRA DE FILTROS --- */
 .mural-filtros {
-    background-color: #f9fafb;
+    background-color: #fce1c2;
     padding: 20px;
     border-radius: 12px;
-    border: 1px solid #e5e7eb;
+    /* border: 1px solid #d97706; */
     margin-bottom: 50px;
 }
 
@@ -62,11 +68,22 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    
 }
+
+.filtro-grupo option {
+    color: #d97706;
+}
+
+/* .filtro-grupo select {
+    border: 2px color #d97706;
+} */
 
 .filtro-grupo.esticado {
     flex: 1; /* Ocupa o espaço restante */
     min-width: 300px;
+    border: 2px color #d97706
+    
 }
 
 .filtro-grupo label {
@@ -93,25 +110,28 @@
 .input-icon input {
     width: 100%;
     padding: 12px 12px 12px 40px; /* Espaço para a lupa */
-    border: 1px solid #d1d5db;
+    border: 2px solid #f9a413;
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
+    outline: none;
 }
 .input-icon input:focus {
-    border-color: #9333EA;
+    border-color:  #d97706;
 }
 
 select {
     padding: 12px;
-    border: 1px solid #d1d5db;
+    border: 2px solid #f9a413;
     border-radius: 8px;
     min-width: 200px;
     font-family: 'Inter', sans-serif;
     background-color: white;
+    outline: none;
 }
 select:focus {
-    border-color: #9333EA;
+    border-color: #d97706;
+    
 }
 
 
@@ -138,7 +158,8 @@ select:focus {
 .card-projeto:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    border-color: #9333EA;
+    border-color: #f9a413;
+    background-color: #fff0d6;
 }
 
 /* BOTÕES DE AÇÃO (Editar/Excluir) */
@@ -173,7 +194,7 @@ select:focus {
 }
 
 .btn-icon.editar:hover {
-    background-color: #9333EA;
+    background-color: #f9a413;
     color: white;
     border-color: #9333EA;
 }
@@ -239,7 +260,7 @@ select:focus {
 }
 
 .descricao {
-    color: #4b5563;
+    color: #000;
     font-size: 0.9rem;
     line-height: 1.5;
     margin: 15px 0;
@@ -277,7 +298,8 @@ select:focus {
     justify-content: space-between;
     align-items: center;
     font-size: 0.85rem;
-    color: #6b7280;
+    color: #d97706;
+    font-weight: 700;
 }
 
 .social-stats {
@@ -481,9 +503,9 @@ select:focus {
     background-color: #7e22ce;
 }
 
-/* ============================================================ */
+
 /* ESTILOS DO MODAL (Base) */
-/* ============================================================ */
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -590,7 +612,7 @@ select:focus {
 .modal-body input:focus, 
 .modal-body select:focus, 
 .modal-body textarea:focus {
-    border-color: #9333EA;
+    border-color: #f9a413;
 }
 
 .modal-footer {

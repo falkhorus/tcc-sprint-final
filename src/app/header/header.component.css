@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-
-
+.navbar {
+    width: 100%;
+    
+    /* Faz o menu grudar no topo */
+    position: sticky; 
+    top: 0;
+    
+    /* Garante que fique NA FRENTE de tudo (mural, cards, rodapé) */
+    z-index: 1000; 
+}
 
 .div-header-background {
     display: flex;
@@ -10,7 +18,7 @@
     align-items: center;
     padding: 30px;
     background-color: #ffffff;
-    box-shadow: #bdb7c2 0px 0px 10px;
+    box-shadow: #b79ece 0px 0px 10px;
 }
 
 .logo {
@@ -75,6 +83,12 @@
     /* muda de tamanho e empurra tudo. */
 }
 
+.nav-header-links-mural a:hover {
+    background-color: #f9a413;
+    color: #ffffff;
+
+}
+
 .perfil {
     margin-left: 15px;
     text-decoration: none;
@@ -103,6 +117,7 @@
     border-radius: 7px;
     font-weight: 700;
 }
+
 
 
 

@@ -72,7 +72,7 @@
 
             <div class="card-talento" [class.card-expandido]="item.expandido">
                 <div class="card-actions">
-    <button class="btn-icon editar" (click)="prepararEdicaoTalento(item, i)">✏️</button>
+    <button class="btn-icon editar" (click)="prepararEdicaoTalento(item, i)">✎</button>
     <button class="btn-icon excluir" (click)="deletarTalento(i)">🗑️</button>
 </div>
                 
@@ -85,9 +85,9 @@
                 </div>
 
                 <div class="card-details">
-                    <p>🕒 {{ item.xp }}</p>
-                    <p>📍 {{ item.local }}</p>
-                    <p>💰 {{ item.valorHora }}</p>
+                    <p>⏳ {{ item.xp }}</p>
+                    <p>🌍 {{ item.local }}</p>
+                    <p>💵 {{ item.valorHora }}</p>
                     <a [href]="item.portifolio" target="_blank">Portfolio</a>
 
                     <div *ngIf="item.expandido" class="detalhes-extras">
