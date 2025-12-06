@@ -53,9 +53,6 @@
     
 }
 
-.nav-header-links {
-    
-}
 
 
 
@@ -172,7 +169,7 @@
         box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         gap: 0; /* Remove o gap grande */
         z-index: 999;
-    }
+    } 
 
     /* CLASSE: Quando o TS diz que está aberto */
     .header-nav.ativo {
@@ -193,6 +190,8 @@
         display: block;
         width: 100%;
     }
+
+    
 }
 
 /* Animação suave de descida */
